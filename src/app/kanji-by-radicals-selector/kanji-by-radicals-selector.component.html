@@ -1,1 +1,17 @@
-<p>kanji-by-radicals-selector works!</p>
+<div class="container">
+	<div class="row">
+		<div class="col-sm my-5">
+			<h1 class="display-3 font-weight-normal" align="center">Kanji Selection by Radicals</h1>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg mt-1">
+			<ul class="list-group">
+ 				<li *ngFor="let radical of radicals.values" class="list-group-item">
+					<button type="button" class="btn btn-outline-primary">{{radical}}</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
