@@ -1,0 +1,11 @@
+{
+  "/OrangeMoon/*": {
+    "target": "http://localhost:8000/",
+    "secure": false,
+    "pathRewrite": {
+      "^/OrangeMoon/rest/": "/OrangeMoon/rest/"
+    },
+    "changeOrigin": false,
+    "logLevel": "debug"
+  }
+}
