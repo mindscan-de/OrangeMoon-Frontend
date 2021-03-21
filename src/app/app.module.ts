@@ -5,11 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainFooterComponent } from './main-footer/main-footer.component';
+import { KanjiByRadicalsSelectorComponent } from './kanji-by-radicals-selector/kanji-by-radicals-selector.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainFooterComponent
+    MainFooterComponent,
+    KanjiByRadicalsSelectorComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
