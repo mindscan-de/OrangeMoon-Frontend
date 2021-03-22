@@ -22,18 +22,18 @@ export class KanjiDataBackendService {
 	getKanjiRadicals () : Observable<BackendKanjiRadicals> {
 		let httpParameters = new HttpParams();
 
-
 		return this.httpClient.get<BackendKanjiRadicals> (this._getKanjiRadicals, {params:httpParameters} );		
 	}
 	
 	
 	getKanjiByRadicals(selectedR:Array<String>) : Observable<BackendKanjiData>  {
-		let httpParameters = new HttpParams();
-		
 		let selectionJoined:string = selectedR.join("");
 		console.log("Our data: "+ selectionJoined);
 		
-		httpParameters.append("selected",selectionJoined );
+		let httpParameters = new HttpParams({encoder:new CustomEncoder()});
+		httpParameters = httpParameters.append("selected",selectionJoined );
+		
+		console.log(httpParameters.toString());
 		
 		return this.httpClient.get<BackendKanjiData>(this._getKanjiBySelectedRadicals, {params:httpParameters});
 	}
