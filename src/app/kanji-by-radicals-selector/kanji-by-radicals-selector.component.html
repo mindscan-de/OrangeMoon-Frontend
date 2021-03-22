@@ -11,7 +11,7 @@
 		<div class="col-lg mt-1">
 			<ul class="list-group">
  				<li class="list-group-item">
-					<button *ngFor="let kanji of retrievedKanji.values" type="button" class="btn btn-outline-primary">{{kanji}}</button>
+					<button *ngFor="let kanji of retrievedKanji.values" type="button" class="btn btn-outline-secondary kanji-m">{{kanji}}</button>
 				</li>
 			</ul>
 		</div>
@@ -28,7 +28,7 @@
 		<div class="col-lg mt-1">
 			<ul class="list-group">
  				<li *ngFor="let radical of radicals.values" class="list-group-item">
-					<button type="button" class="btn btn-outline-primary">{{radical}}</button>
+					<button type="button" class="btn btn-outline-primary kanji-m">{{radical}}</button>
 				</li>
 			</ul>
 		</div>
