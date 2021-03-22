@@ -30,7 +30,10 @@ export class KanjiDataBackendService {
 	getKanjiByRadicals(selectedR:Array<String>) : Observable<BackendKanjiData>  {
 		let httpParameters = new HttpParams();
 		
-		httpParameters.append("selected", selectedR.join())
+		let selectionJoined:string = selectedR.join("");
+		console.log("Our data: "+ selectionJoined);
+		
+		httpParameters.append("selected",selectionJoined );
 		
 		return this.httpClient.get<BackendKanjiData>(this._getKanjiBySelectedRadicals, {params:httpParameters});
 	}
