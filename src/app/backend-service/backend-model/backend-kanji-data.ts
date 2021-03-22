@@ -1,3 +1,3 @@
 export class BackendKanjiData {
-	public kanji:String='';
+	public values : Array<String> = [];
 }
