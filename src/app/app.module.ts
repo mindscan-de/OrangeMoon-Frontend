@@ -8,13 +8,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainFooterComponent } from './main-footer/main-footer.component';
 import { KanjiByRadicalsSelectorComponent } from './kanji-by-radicals-selector/kanji-by-radicals-selector.component';
 import { MainComponent } from './main/main.component';
+import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainFooterComponent,
     KanjiByRadicalsSelectorComponent,
-    MainComponent
+    MainComponent,
+    MainNavigationComponent
   ],
   imports: [
     BrowserModule,
