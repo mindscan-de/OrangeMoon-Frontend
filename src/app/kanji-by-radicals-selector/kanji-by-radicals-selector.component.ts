@@ -21,14 +21,14 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
 	
     public selectableRadicals: UiModelSelectableKanji[] = new Array<UiModelSelectableKanji>();
 
-	public combinedRadicals: Set<String> = new Set<String>();
+	public combinedRadicals: Set<UiModelSelectableKanji> = new Set<UiModelSelectableKanji>();
 	
 
 	constructor(private activatedRoute : ActivatedRoute, private backendService: KanjiDataBackendService, ) { }
 
 	ngOnInit(): void {
 		this.retrieveRadicals();
-		this.retrieveKanjiByRadicals(['\u96E8','\u6728']);
+		this.retrieveKanjiByRadicals([]);
 	}
 	
 	
@@ -54,12 +54,14 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
 
 
     onKanjiRadicalsLoaded(data: BackendKanjiRadicals): void {
+		// TODO: refactor this to m2m
 		let selectableRadicals = new Array<UiModelSelectableKanji>();
 		for(let i=0;i<data.values.length;i++) {
 			let radical = new UiModelSelectableKanji(data.values[i]);
 			selectableRadicals.push(radical);
 		}
 		
+		this.combinedRadicals = new Set<UiModelSelectableKanji>();
 		this.selectableRadicals = selectableRadicals;
         this.radicals = data;
     }
@@ -69,13 +71,18 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
     }
 
 	toggleRadical(radical:UiModelSelectableKanji): void {
-		
 		radical.selected = !radical.selected;
 		
-		console.log(radical);
+		if(radical.selected) {
+			this.combinedRadicals.add(radical);
+		}
+		else{
+			this.combinedRadicals.delete(radical);
+		}
 		
-		// TODO: Combine the selected radicals
-		// button.selected = this.selectedRadicals[index]?"selected":"";
+		let selectedRadicals = this.selectableRadicals.filter(radical => radical.selected).map(radical => radical.kanji);
+		
+		this.retrieveKanjiByRadicals(selectedRadicals);
 	}
 
 }
