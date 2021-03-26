@@ -28,7 +28,7 @@
 		<div class="col-lg mt-1">
 			<ul class="list-group">
  				<li  class="list-group-item">
-					<button *ngFor="let radical of selectableRadicals; let i = index" type="button" class="btn kanji-m" [disabled]="radical.disabled"  [ngClass]="{'btn-primary' : radical.selected, 'btn-outline-primary': !radical.selected }" (click)="toggleRadical(radical); ">{{radical.kanji}}</button>
+					<button *ngFor="let radical of selectableRadicals; let i = index" type="button" class="btn kanji-m" [disabled]="radical.disabled"  [ngClass]="{ 'btn-outline-secondary':radical.disabled, 'btn-primary' : radical.selected, 'btn-outline-primary': !radical.selected && !radical.disabled }" (click)="toggleRadical(radical); ">{{radical.kanji}}</button>
 				</li>
 			</ul>
 		</div>
