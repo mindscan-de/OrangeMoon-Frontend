@@ -19,7 +19,7 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
 	
     public selectableRadicals: UiModelSelectableKanji[] = new Array<UiModelSelectableKanji>();
 	
-	public retrievedKanji: BackendKanjiData = new BackendKanjiData();
+	public retrievedKanji: BackendKanjiAndRadicalData = new BackendKanjiAndRadicalData();
 
 	// Keeps the current state of the current selected radicals
 	private combinedRadicals: Set<UiModelSelectableKanji> = new Set<UiModelSelectableKanji>();
@@ -70,21 +70,20 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
 		
 		console.log(selectedRadicals);
 		
-		// this.retrieveKanjiByRadicals(selectedRadicals);
+		this.retrieveKanjiByRadicals2(selectedRadicals);
 	}
 
-/*    retrieveKanjiByRadicals2(selection:Array<String>) {
+    retrieveKanjiByRadicals2(selection:Array<String>) {
         this.backendService.getKanjiAndRadicalsByRadicals(selection).subscribe(
 			data => this.onSelectedKanjiLoaded(data),
-			error => this.onKanjiRadicalsFailes(error)
+			error => this.onKanjiRadicalsFailed(error)
 		);
     }
-*/
-/*    onSelectedKanjiLoaded(data: BackendKanjiAndRadicalData): void {
+
+    onSelectedKanjiLoaded(data: BackendKanjiAndRadicalData): void {
 		console.log(data);
 	
         this.retrievedKanji = data;
-    }*/
-
+    }
 
 }
