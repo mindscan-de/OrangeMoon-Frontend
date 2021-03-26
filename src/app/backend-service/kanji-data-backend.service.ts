@@ -49,7 +49,7 @@ export class KanjiDataBackendService {
 		
 		console.log(httpParameters.toString());
 		
-		return this.httpClient.get<BackendKanjiAndRadicalData>(this._getKanjiBySelectedRadicals, {params:httpParameters});
+		return this.httpClient.get<BackendKanjiAndRadicalData>(this._getKanjiBySelectedRadicals2, {params:httpParameters});
 	}
 	
 }

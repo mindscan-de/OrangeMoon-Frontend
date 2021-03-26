@@ -84,6 +84,15 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
 		console.log(data);
 	
         this.retrievedKanji = data;
+
+		
+
+		// Now go through all the selectable radicals and disable these which are not in the data.remaining_radicals
+		this.selectableRadicals.forEach(radical => radical.setDisabled(!this.isRadicalInData(radical,data.remaining_radicals)));
     }
+
+	isRadicalInData(radical:UiModelSelectableKanji, theAciveRadicals:String[]):boolean {
+		return theAciveRadicals.includes(radical.kanji);
+	}
 
 }
