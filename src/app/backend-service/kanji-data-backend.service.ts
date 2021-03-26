@@ -8,6 +8,7 @@ import { CustomEncoder } from './custom-encoder';
 // Import Backend Models
 import { BackendKanjiRadicals } from './backend-model/backend-kanji-radicals';
 import { BackendKanjiData } from './backend-model/backend-kanji-data';
+import { BackendKanjiAndRadicalData } from './backend-model/backend-kanji-and-radical-data';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class KanjiDataBackendService {
 	
 	private _getKanjiRadicals           = '/OrangeMoon/rest/getKanjiRadicals'
 	private _getKanjiBySelectedRadicals = '/OrangeMoon/rest/getKanjiBySelectedRadicals' 
+	private _getKanjiBySelectedRadicals2 = '/OrangeMoon/rest/getKanjiBySelectedRadicals2'
 	
 	constructor( private httpClient : HttpClient ) { }
 
@@ -37,4 +39,17 @@ export class KanjiDataBackendService {
 		
 		return this.httpClient.get<BackendKanjiData>(this._getKanjiBySelectedRadicals, {params:httpParameters});
 	}
+	
+	getKanjiAndRadicalsByRadicals(selectedR:Array<String>) : Observable<BackendKanjiAndRadicalData>  {
+		let selectionJoined:string = selectedR.join("");
+		console.log("Our data: "+ selectionJoined);
+		
+		let httpParameters = new HttpParams({encoder:new CustomEncoder()});
+		httpParameters = httpParameters.append("selected",selectionJoined );
+		
+		console.log(httpParameters.toString());
+		
+		return this.httpClient.get<BackendKanjiAndRadicalData>(this._getKanjiBySelectedRadicals, {params:httpParameters});
+	}
+	
 }

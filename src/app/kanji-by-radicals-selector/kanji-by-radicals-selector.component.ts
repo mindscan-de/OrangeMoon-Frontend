@@ -5,6 +5,7 @@ import {KanjiDataBackendService} from '../backend-service/kanji-data-backend.ser
 
 import { BackendKanjiData } from '../backend-service/backend-model/backend-kanji-data';
 import { BackendKanjiRadicals } from '../backend-service/backend-model/backend-kanji-radicals';
+import { BackendKanjiAndRadicalData } from '../backend-service/backend-model/backend-kanji-and-radical-data';
 
 import { UiModelSelectableKanji }  from './ui-model/ui-model-selectable-kanji';
 
@@ -16,7 +17,9 @@ import { UiModelSelectableKanji }  from './ui-model/ui-model-selectable-kanji';
 })
 export class KanjiByRadicalsSelectorComponent implements OnInit {
 	
+	// These are able to be disabled or not.
 	public radicals: BackendKanjiRadicals = new BackendKanjiRadicals();
+	
 	public retrievedKanji: BackendKanjiData = new BackendKanjiData();
 	
     public selectableRadicals: UiModelSelectableKanji[] = new Array<UiModelSelectableKanji>();
@@ -28,29 +31,28 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.retrieveRadicals();
-		this.retrieveKanjiByRadicals([]);
+		// this.retrieveKanjiByRadicals2([]);
 	}
-	
 	
     retrieveRadicals() {
         this.backendService.getKanjiRadicals().subscribe(
 			data => this.onKanjiRadicalsLoaded(data),
-			error => this.onKanjiRadicalsFailes(error)
+			error => this.onKanjiRadicalsFailed(error)
 		);
     }
 
-    retrieveKanjiByRadicals(selection:Array<String>) {
-        this.backendService.getKanjiByRadicals(selection).subscribe(
+/*    retrieveKanjiByRadicals2(selection:Array<String>) {
+        this.backendService.getKanjiAndRadicalsByRadicals(selection).subscribe(
 			data => this.onSelectedKanjiLoaded(data),
 			error => this.onKanjiRadicalsFailes(error)
 		);
     }
-
-    onSelectedKanjiLoaded(data: BackendKanjiData): void {
+*/
+/*    onSelectedKanjiLoaded(data: BackendKanjiAndRadicalData): void {
 		console.log(data);
 	
         this.retrievedKanji = data;
-    }
+    }*/
 
 
     onKanjiRadicalsLoaded(data: BackendKanjiRadicals): void {
@@ -66,7 +68,7 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
         this.radicals = data;
     }
 
-    onKanjiRadicalsFailes(error: any): void {
+    onKanjiRadicalsFailed(error: any): void {
         console.log(error);
     }
 
@@ -82,7 +84,9 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
 		
 		let selectedRadicals = this.selectableRadicals.filter(radical => radical.selected).map(radical => radical.kanji);
 		
-		this.retrieveKanjiByRadicals(selectedRadicals);
+		console.log(selectedRadicals);
+		
+		// this.retrieveKanjiByRadicals(selectedRadicals);
 	}
 
 }
