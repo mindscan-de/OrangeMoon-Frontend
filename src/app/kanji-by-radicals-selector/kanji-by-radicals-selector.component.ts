@@ -17,11 +17,12 @@ import { UiModelSelectableKanji }  from './ui-model/ui-model-selectable-kanji';
 })
 export class KanjiByRadicalsSelectorComponent implements OnInit {
 	
-	public retrievedKanji: BackendKanjiData = new BackendKanjiData();
-	
     public selectableRadicals: UiModelSelectableKanji[] = new Array<UiModelSelectableKanji>();
+	
+	public retrievedKanji: BackendKanjiData = new BackendKanjiData();
 
-	public combinedRadicals: Set<UiModelSelectableKanji> = new Set<UiModelSelectableKanji>();
+	// Keeps the current state of the current selected radicals
+	private combinedRadicals: Set<UiModelSelectableKanji> = new Set<UiModelSelectableKanji>();
 	
 
 	constructor(private activatedRoute : ActivatedRoute, private backendService: KanjiDataBackendService, ) { }
