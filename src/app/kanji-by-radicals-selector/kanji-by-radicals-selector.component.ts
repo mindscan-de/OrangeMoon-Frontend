@@ -3,7 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import {KanjiDataBackendService} from '../backend-service/kanji-data-backend.service';
 
-import { BackendKanjiData } from '../backend-service/backend-model/backend-kanji-data';
 import { BackendKanjiRadicals } from '../backend-service/backend-model/backend-kanji-radicals';
 import { BackendKanjiAndRadicalData } from '../backend-service/backend-model/backend-kanji-and-radical-data';
 
