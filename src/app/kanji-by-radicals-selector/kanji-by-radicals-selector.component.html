@@ -6,31 +6,26 @@
 	</div>
 	
 	<app-main-navigation></app-main-navigation>
-
-	<div class="row">
-		<div class="col-lg mt-1">
-			<ul class="list-group">
- 				<li class="list-group-item">
-					<button *ngFor="let kanji of retrievedKanji.values" type="button" class="btn btn-outline-secondary kanji-m">{{kanji}}</button>
-				</li>
-			</ul>
-		</div>
-	</div>
 	
 	<div class="row">
-		<div class="col-sm my-5">
-			<h1 class="display-5 font-weight-normal" align="center">Select</h1>
-		</div>
-	</div>
-	
-
-	<div class="row">
-		<div class="col-lg mt-1">
+		<div class="col-lg-9 mt-1">
+			<h4>Select</h4>
 			<ul class="list-group">
  				<li  class="list-group-item">
 					<button *ngFor="let radical of selectableRadicals; let i = index" type="button" class="btn kanji-m" [disabled]="radical.disabled"  [ngClass]="{ 'btn-outline-secondary':radical.disabled, 'btn-primary' : radical.selected, 'btn-outline-primary': !radical.selected && !radical.disabled }" (click)="toggleRadical(radical); ">{{radical.kanji}}</button>
 				</li>
 			</ul>
 		</div>
+		
+		<div class="col-lg-3  mt-1">
+			<h4>Result</h4>
+			<ul class="list-group">
+ 				<li class="list-group-item">
+					<button *ngFor="let kanji of retrievedKanji.values" type="button" class="btn btn-outline-secondary kanji-m">{{kanji}}</button>
+				</li>
+			</ul>
+		</div>
+		
 	</div>
+
 </div>
