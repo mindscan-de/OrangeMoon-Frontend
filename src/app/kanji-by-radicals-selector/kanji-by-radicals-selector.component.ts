@@ -17,9 +17,6 @@ import { UiModelSelectableKanji }  from './ui-model/ui-model-selectable-kanji';
 })
 export class KanjiByRadicalsSelectorComponent implements OnInit {
 	
-	// These are able to be disabled or not.
-	public radicals: BackendKanjiRadicals = new BackendKanjiRadicals();
-	
 	public retrievedKanji: BackendKanjiData = new BackendKanjiData();
 	
     public selectableRadicals: UiModelSelectableKanji[] = new Array<UiModelSelectableKanji>();
@@ -50,12 +47,13 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
 		
 		this.combinedRadicals = new Set<UiModelSelectableKanji>();
 		this.selectableRadicals = selectableRadicals;
-        this.radicals = data;
     }
 
     onKanjiRadicalsFailed(error: any): void {
         console.log(error);
     }
+
+
 
 	toggleRadical(radical:UiModelSelectableKanji): void {
 		radical.selected = !radical.selected;
