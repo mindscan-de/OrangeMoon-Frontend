@@ -31,7 +31,6 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.retrieveRadicals();
-		// this.retrieveKanjiByRadicals2([]);
 	}
 	
     retrieveRadicals() {
@@ -40,20 +39,6 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
 			error => this.onKanjiRadicalsFailed(error)
 		);
     }
-
-/*    retrieveKanjiByRadicals2(selection:Array<String>) {
-        this.backendService.getKanjiAndRadicalsByRadicals(selection).subscribe(
-			data => this.onSelectedKanjiLoaded(data),
-			error => this.onKanjiRadicalsFailes(error)
-		);
-    }
-*/
-/*    onSelectedKanjiLoaded(data: BackendKanjiAndRadicalData): void {
-		console.log(data);
-	
-        this.retrievedKanji = data;
-    }*/
-
 
     onKanjiRadicalsLoaded(data: BackendKanjiRadicals): void {
 		// TODO: refactor this to m2m
@@ -88,5 +73,19 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
 		
 		// this.retrieveKanjiByRadicals(selectedRadicals);
 	}
+
+/*    retrieveKanjiByRadicals2(selection:Array<String>) {
+        this.backendService.getKanjiAndRadicalsByRadicals(selection).subscribe(
+			data => this.onSelectedKanjiLoaded(data),
+			error => this.onKanjiRadicalsFailes(error)
+		);
+    }
+*/
+/*    onSelectedKanjiLoaded(data: BackendKanjiAndRadicalData): void {
+		console.log(data);
+	
+        this.retrievedKanji = data;
+    }*/
+
 
 }
