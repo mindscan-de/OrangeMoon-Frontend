@@ -27,9 +27,11 @@
 			<ng-container *ngFor="let kanji of entry.kanji;">
 				<h3 class="display-3">{{kanji.text}}</h3>
 			</ng-container>
+			<ul>
 			<ng-container *ngFor="let kana of entry.kana;">
-				<span>{{kana.text}}</span>
+				<li>{{kana.text}}</li>
 			</ng-container>
+			</ul>
 		</div>
 		
 		<div class="col-lg-4">
@@ -59,7 +61,7 @@
 			<span>{{char.stroke_count}} strokes</span>
 			<h3 class="display-3">{{char.literal}}</h3>
 			
-			<span class="badge badge-success mr-1">JLPT {{char.jlpt}}</span>
+			<span class="badge badge-success mr-1">JLPT N{{char.jlpt}}</span>
 			<span class="badge badge-info">Grade {{char.grade}}</span>
 			
 		</div>
