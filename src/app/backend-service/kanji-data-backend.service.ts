@@ -9,15 +9,17 @@ import { CustomEncoder } from './custom-encoder';
 import { BackendKanjiRadicals } from './backend-model/backend-kanji-radicals';
 import { BackendKanjiData } from './backend-model/backend-kanji-data';
 import { BackendKanjiAndRadicalData } from './backend-model/backend-kanji-and-radical-data';
+import { BackendKanjiRadicalsWithStrokes } from './backend-model/backend-kanji-radicals-with-strokes';
 
 @Injectable({
   providedIn: 'root'
 })
 export class KanjiDataBackendService {
 	
-	private _getKanjiRadicals           = '/OrangeMoon/rest/getKanjiRadicals'
-	private _getKanjiBySelectedRadicals = '/OrangeMoon/rest/getKanjiBySelectedRadicals' 
-	private _getKanjiBySelectedRadicals2 = '/OrangeMoon/rest/getKanjiBySelectedRadicals2'
+	private _getKanjiRadicals            = '/OrangeMoon/rest/getKanjiRadicals';
+	private _getKanjiRadicalsWithStrokes = '/OrangeMoon/rest/getKanjiRadicalsWithStrokes';
+	private _getKanjiBySelectedRadicals  = '/OrangeMoon/rest/getKanjiBySelectedRadicals'; 
+	private _getKanjiBySelectedRadicals2 = '/OrangeMoon/rest/getKanjiBySelectedRadicals2';
 	
 	constructor( private httpClient : HttpClient ) { }
 
@@ -27,6 +29,11 @@ export class KanjiDataBackendService {
 		return this.httpClient.get<BackendKanjiRadicals> (this._getKanjiRadicals, {params:httpParameters} );		
 	}
 	
+	getKanjiRadicalsWithStrokeCount () : Observable<BackendKanjiRadicalsWithStrokes> {
+		let httpParameters = new HttpParams();
+		
+		return this.httpClient.get<BackendKanjiRadicalsWithStrokes> (this._getKanjiRadicalsWithStrokes, {params:httpParameters} );
+	}
 	
 	getKanjiByRadicals(selectedR:Array<String>) : Observable<BackendKanjiData>  {
 		let selectionJoined:string = selectedR.join("");

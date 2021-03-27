@@ -5,8 +5,10 @@ import {KanjiDataBackendService} from '../backend-service/kanji-data-backend.ser
 
 import { BackendKanjiRadicals } from '../backend-service/backend-model/backend-kanji-radicals';
 import { BackendKanjiAndRadicalData } from '../backend-service/backend-model/backend-kanji-and-radical-data';
+import { BackendKanjiRadicalsWithStrokes } from '../backend-service/backend-model/backend-kanji-radicals-with-strokes';
 
 import { UiModelSelectableKanji }  from './ui-model/ui-model-selectable-kanji';
+
 
 
 @Component({
@@ -31,17 +33,17 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
 	}
 	
     retrieveRadicals() {
-        this.backendService.getKanjiRadicals().subscribe(
+        this.backendService.getKanjiRadicalsWithStrokeCount().subscribe(
 			data => this.onKanjiRadicalsLoaded(data),
 			error => this.onKanjiRadicalsFailed(error)
 		);
     }
 
-    onKanjiRadicalsLoaded(data: BackendKanjiRadicals): void {
+    onKanjiRadicalsLoaded(data: BackendKanjiRadicalsWithStrokes): void {
 		// TODO: refactor this to m2m
 		let selectableRadicals = new Array<UiModelSelectableKanji>();
-		for(let i=0;i<data.values.length;i++) {
-			let radical = new UiModelSelectableKanji(data.values[i]);
+		for(let i=0;i<data.list.length;i++) {
+			let radical = new UiModelSelectableKanji(data.list[i]);
 			selectableRadicals.push(radical);
 		}
 		
