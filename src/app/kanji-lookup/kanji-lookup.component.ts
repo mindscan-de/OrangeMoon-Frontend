@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params} from '@angular/router';
 
+import { KanjiDataBackendService } from '../backend-service/kanji-data-backend.service';
+
 @Component({
   selector: 'app-kanji-lookup',
   templateUrl: './kanji-lookup.component.html',
@@ -8,9 +10,9 @@ import { ActivatedRoute, Router, Params} from '@angular/router';
 })
 export class KanjiLookupComponent implements OnInit {
 	
-	public currentKanjiQueryString: String="test";
+	public currentKanjiQueryString: string="test";
 
-	constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+	constructor(private activatedRoute: ActivatedRoute, private router: Router, private backendService: KanjiDataBackendService,) {
   		// subscribe to page parameters		
   		this.activatedRoute.queryParams.subscribe( pageParameters => {
 	 		this.onContentPageParametersProvided( pageParameters );
@@ -23,8 +25,26 @@ export class KanjiLookupComponent implements OnInit {
 	onContentPageParametersProvided( pageParameters ):void { 
 		this.currentKanjiQueryString = this.activatedRoute.snapshot.queryParams["q"];
 		
-		// TODO: subscribe to the Kanji lookup and then present the result.
+		if(this.currentKanjiQueryString.trim() != "") {
+			this.backendService.strictLookupKanji(this.currentKanjiQueryString).subscribe(
+				data => this.onLookupResultLoaded(data),
+				error => this.onLookupResultFailed(error)
+			);
+		}
+		else
+		{
+			// just make the result empty
+		}
 	}
+	
+	onLookupResultLoaded(data: any) : void {
+		console.log(data);
+	}
+	
+	onLookupResultFailed(error: any) : void {
+		console.log(error);
+	}
+	
 	
 	onSubmit():void {
 		var queryParameterQ = this.currentKanjiQueryString;

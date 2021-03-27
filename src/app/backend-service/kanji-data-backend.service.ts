@@ -20,6 +20,7 @@ export class KanjiDataBackendService {
 	private _getKanjiRadicalsWithStrokes = '/OrangeMoon/rest/getKanjiRadicalsWithStrokes';
 	private _getKanjiBySelectedRadicals  = '/OrangeMoon/rest/getKanjiBySelectedRadicals'; 
 	private _getKanjiBySelectedRadicals2 = '/OrangeMoon/rest/getKanjiBySelectedRadicals2';
+	private _lookupStrictKanji           = '/OrangeMoon/rest/strictLookupKanji';	
 	
 	constructor( private httpClient : HttpClient ) { }
 
@@ -59,4 +60,11 @@ export class KanjiDataBackendService {
 		return this.httpClient.get<BackendKanjiAndRadicalData>(this._getKanjiBySelectedRadicals2, {params:httpParameters});
 	}
 	
+	strictLookupKanji(selectedKanji:string) : Observable<any> {
+		let httpParameters = new HttpParams({encoder:new CustomEncoder()});
+		
+		httpParameters = httpParameters.append("selected",selectedKanji );
+		
+		return this.httpClient.get<any>(this._lookupStrictKanji, {params: httpParameters})
+	}
 }

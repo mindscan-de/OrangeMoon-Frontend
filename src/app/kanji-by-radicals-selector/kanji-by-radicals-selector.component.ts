@@ -27,7 +27,7 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
     
 	
 
-	constructor(private activatedRoute : ActivatedRoute, private backendService: KanjiDataBackendService, ) { }
+	constructor(private activatedRoute : ActivatedRoute, private backendService: KanjiDataBackendService ) { }
 
 	ngOnInit(): void {
 		this.retrieveRadicals();
