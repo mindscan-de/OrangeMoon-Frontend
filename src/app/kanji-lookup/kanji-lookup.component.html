@@ -7,4 +7,20 @@
 	
 	<app-main-navigation></app-main-navigation>
 
+	<div class="row">
+		<div class="col-sm my-5">
+			<form (ngSubmit)="onSubmit()">
+			<div class="form-row">
+				<div class="input-group mb-3">
+					<input type="text" class="form-control form-control-lg" [(ngModel)]="currentKanjiQueryString" placeholder="Kanji"  name="q" >
+					<div class="input-group-append">
+						<button class="btn btn-outline-success btn-lg" type="submit" ><span>Lookup</span></button>
+					</div>			
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+	
+
 </div>
