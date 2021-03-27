@@ -19,11 +19,12 @@ import { UiModelSelectableKanji }  from './ui-model/ui-model-selectable-kanji';
 export class KanjiByRadicalsSelectorComponent implements OnInit {
 	
     public selectableRadicals: UiModelSelectableKanji[] = new Array<UiModelSelectableKanji>();
-	
 	public retrievedKanji: BackendKanjiAndRadicalData = new BackendKanjiAndRadicalData();
+	public radicalTree: BackendKanjiRadicalsWithStrokes = new BackendKanjiRadicalsWithStrokes();
 
 	// Keeps the current state of the current selected radicals
 	private combinedRadicals: Set<UiModelSelectableKanji> = new Set<UiModelSelectableKanji>();
+    
 	
 
 	constructor(private activatedRoute : ActivatedRoute, private backendService: KanjiDataBackendService, ) { }
@@ -49,6 +50,7 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
 		
 		this.combinedRadicals = new Set<UiModelSelectableKanji>();
 		this.selectableRadicals = selectableRadicals;
+		this.radicalTree = data; 
     }
 
     onKanjiRadicalsFailed(error: any): void {
