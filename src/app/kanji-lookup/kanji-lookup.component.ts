@@ -18,14 +18,12 @@ export class KanjiLookupComponent implements OnInit {
 	}
 	
 	ngOnInit(): void {
-  		this.activatedRoute.queryParams.subscribe( pageParameters => {
-	 		this.onContentPageParametersProvided( pageParameters );
-  		});
-	  	
 	}
 	
 	onContentPageParametersProvided( pageParameters ):void { 
 		this.currentKanjiQueryString = this.activatedRoute.snapshot.queryParams["q"];
+		
+		// TODO: subscribe to the Kanji lookup and then present the result.
 	}
 	
 	onSubmit():void {
