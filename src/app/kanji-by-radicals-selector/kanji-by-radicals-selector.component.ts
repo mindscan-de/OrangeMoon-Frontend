@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+// Backend Service
 import {KanjiDataBackendService} from '../backend-service/kanji-data-backend.service';
 
+// Backend Model
 import { BackendKanjiRadicals } from '../backend-service/backend-model/backend-kanji-radicals';
 import { BackendKanjiAndRadicalData } from '../backend-service/backend-model/backend-kanji-and-radical-data';
 import { BackendKanjiRadicalsWithStrokes } from '../backend-service/backend-model/backend-kanji-radicals-with-strokes';
 
+// UI Model
 import { UiModelSelectableKanji }  from './ui-model/ui-model-selectable-kanji';
 
 
@@ -24,9 +27,7 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
 
 	// Keeps the current state of the current selected radicals
 	private combinedRadicals: Set<UiModelSelectableKanji> = new Set<UiModelSelectableKanji>();
-    
 	
-
 	constructor(private activatedRoute : ActivatedRoute, private backendService: KanjiDataBackendService ) { }
 
 	ngOnInit(): void {
