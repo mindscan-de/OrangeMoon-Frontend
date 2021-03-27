@@ -22,16 +22,72 @@
 		</div>
 	</div>
 	
+	<div *ngFor="let entry of lookupResult.entries; let i = index" class="row mt-2 mb-5" >
+		<div class="col-lg-2">
+			<ng-container *ngFor="let kanji of entry.kanji;">
+				<h3 class="display-3">{{kanji.text}}</h3>
+			</ng-container>
+			<ng-container *ngFor="let kana of entry.kana;">
+				<span>{{kana.text}}</span>
+			</ng-container>
+		</div>
+		
+		<div class="col-lg-4">
+			<ul>
+				<ng-container *ngFor="let sense of entry.senses;">
+				<li *ngFor="let translation of sense.SenseGloss; ">{{translation.text}}</li>
+				</ng-container>
+				<ng-container *ngFor="let sense of entry.senses;">
+				<li *ngFor="let ref of sense.xref; ">see also: {{ref}}</li>
+				</ng-container>
+			</ul>
+		</div>
+
+		<div class="col-lg-6">
+			<ul>
+				<ng-container *ngFor="let sense of entry.senses;">
+				<li *ngFor="let pos of sense.pos; ">{{pos}}</li>
+				</ng-container>
+			</ul>
+		</div>
+		
+	</div>
+
 	<div *ngFor="let char of lookupResult.chars; let i = index" class="row mt-2" >
-		<div class="col-lg">
+		<div class="col-lg-2">
 			
+			<span>{{char.stroke_count}} strokes</span>
 			<h3 class="display-3">{{char.literal}}</h3>
 			
 			<span class="badge badge-success mr-1">JLPT {{char.jlpt}}</span>
 			<span class="badge badge-info">Grade {{char.grade}}</span>
 			
-			
 		</div>
+		
+		<div class="col-lg-4">
+			<ul *ngFor="let rm of char.rm;">
+				<ng-container *ngFor="let meaning of rm.meanings; ">
+					<li *ngIf="meaning.m_lang==''">{{meaning.value}}</li>
+				</ng-container>
+			</ul>
+		</div>
+		
+		<div class="col-lg-4">
+			<h5>Kun</h5>
+			<ul *ngFor="let rm of char.rm;">
+				<ng-container *ngFor="let reading of rm.readings; ">
+					<li *ngIf="reading.type=='ja_kun'">{{reading.value}}</li>
+				</ng-container>
+			</ul>
+			
+			<h5>On</h5>
+			<ul *ngFor="let rm of char.rm;">
+				<ng-container *ngFor="let reading of rm.readings; ">
+					<li *ngIf="reading.type=='ja_on'">{{reading.value}}</li>
+				</ng-container>
+			</ul>
+		</div>
+		
 	</div>
 	
 

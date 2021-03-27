@@ -1,6 +1,6 @@
 export class BackendLookupResult {
 	public chars: BackendLookupResultChar[] = [];
-	public entries: any[] = [];
+	public entries: BackendLookupResultEntry[] = [];
 	public names: BackendLookupResultName[] = [];
 }
 
@@ -9,6 +9,17 @@ export class BackendLookupResultName {
 	public kana: any[] = [];
 	public kanji: any[] = [];
 }
+
+export class BackendLookupResultEntry {
+	public idseq: string = "";
+	// the reading::pri,text
+	public kana: any[] = [];
+	// the kanji::pri,text
+	public kanji: any[] = [];
+	// translation and crossreferences::SenseGloss,pos,xref
+	public senses: any[] = [];
+}
+
 
 export class BackendLookupResultChar {
 	public codepoints: any[] = [];
@@ -21,7 +32,7 @@ export class BackendLookupResultChar {
 	public q_codes: any[] = [];
 	public rad_names: any[] = [];
 	public radicals: any[] = [];
-	public rm: any[] = [];
+	public rm: BackendLookupResultReadingsMeanings[] = [];
 	public stroke_count: number = 0;
 	public variants: any[] = [];
 }
