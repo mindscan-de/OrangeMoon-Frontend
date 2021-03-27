@@ -9,6 +9,7 @@ import { MainFooterComponent } from './main-footer/main-footer.component';
 import { KanjiByRadicalsSelectorComponent } from './kanji-by-radicals-selector/kanji-by-radicals-selector.component';
 import { MainComponent } from './main/main.component';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
+import { KanjiLookupComponent } from './kanji-lookup/kanji-lookup.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MainNavigationComponent } from './main-navigation/main-navigation.compo
     MainFooterComponent,
     KanjiByRadicalsSelectorComponent,
     MainComponent,
-    MainNavigationComponent
+    MainNavigationComponent,
+    KanjiLookupComponent
   ],
   imports: [
     BrowserModule,
