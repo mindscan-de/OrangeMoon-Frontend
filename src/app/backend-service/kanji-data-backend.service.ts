@@ -10,6 +10,7 @@ import { BackendKanjiRadicals } from './backend-model/backend-kanji-radicals';
 import { BackendKanjiData } from './backend-model/backend-kanji-data';
 import { BackendKanjiAndRadicalData } from './backend-model/backend-kanji-and-radical-data';
 import { BackendKanjiRadicalsWithStrokes } from './backend-model/backend-kanji-radicals-with-strokes';
+import { BackendLookupResult } from './backend-model/backend-lookup-result';
 
 @Injectable({
   providedIn: 'root'
@@ -60,11 +61,11 @@ export class KanjiDataBackendService {
 		return this.httpClient.get<BackendKanjiAndRadicalData>(this._getKanjiBySelectedRadicals2, {params:httpParameters});
 	}
 	
-	strictLookupKanji(selectedKanji:string) : Observable<any> {
+	strictLookupKanji(selectedKanji:string) : Observable<BackendLookupResult> {
 		let httpParameters = new HttpParams({encoder:new CustomEncoder()});
 		
 		httpParameters = httpParameters.append("selected",selectedKanji );
 		
-		return this.httpClient.get<any>(this._lookupStrictKanji, {params: httpParameters})
+		return this.httpClient.get<BackendLookupResult>(this._lookupStrictKanji, {params: httpParameters})
 	}
 }

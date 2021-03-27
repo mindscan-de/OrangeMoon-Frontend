@@ -3,6 +3,8 @@ import { ActivatedRoute, Router, Params} from '@angular/router';
 
 import { KanjiDataBackendService } from '../backend-service/kanji-data-backend.service';
 
+import { BackendLookupResult } from '../backend-service/backend-model/backend-lookup-result';
+
 @Component({
   selector: 'app-kanji-lookup',
   templateUrl: './kanji-lookup.component.html',
@@ -37,7 +39,7 @@ export class KanjiLookupComponent implements OnInit {
 		}
 	}
 	
-	onLookupResultLoaded(data: any) : void {
+	onLookupResultLoaded(data: BackendLookupResult) : void {
 		console.log(data);
 	}
 	
