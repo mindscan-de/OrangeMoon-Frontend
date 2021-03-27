@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params} from '@angular/router';
 
+// Backend Service
 import { KanjiDataBackendService } from '../backend-service/kanji-data-backend.service';
 
+// Backend Model
 import { BackendLookupResult } from '../backend-service/backend-model/backend-lookup-result';
+
 
 @Component({
   selector: 'app-kanji-lookup',
@@ -13,6 +16,7 @@ import { BackendLookupResult } from '../backend-service/backend-model/backend-lo
 export class KanjiLookupComponent implements OnInit {
 	
 	public currentKanjiQueryString: string="test";
+	public lookupResult: BackendLookupResult = new BackendLookupResult();
 
 	constructor(private activatedRoute: ActivatedRoute, private router: Router, private backendService: KanjiDataBackendService,) {
   		// subscribe to page parameters		
@@ -41,10 +45,14 @@ export class KanjiLookupComponent implements OnInit {
 	
 	onLookupResultLoaded(data: BackendLookupResult) : void {
 		console.log(data);
+		
+		this.lookupResult = data;
 	}
 	
 	onLookupResultFailed(error: any) : void {
 		console.log(error);
+		
+		this.lookupResult = new BackendLookupResult();
 	}
 	
 	

@@ -22,5 +22,17 @@
 		</div>
 	</div>
 	
+	<div *ngFor="let char of lookupResult.chars; let i = index" class="row mt-2" >
+		<div class="col-lg">
+			
+			<h3 class="display-3">{{char.literal}}</h3>
+			
+			<span class="badge badge-success mr-1">JLPT {{char.jlpt}}</span>
+			<span class="badge badge-info">Grade {{char.grade}}</span>
+			
+			
+		</div>
+	</div>
+	
 
 </div>
