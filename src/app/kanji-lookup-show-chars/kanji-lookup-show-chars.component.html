@@ -1,3 +1,23 @@
+	<div *ngFor="let uichar of uiChars" class="row mt-2">
+		<div class="col-lg-1">
+			<span>{{uichar.stroke_count}} strokes</span>
+			<h3 class="display-3">{{uichar.literal}}</h3>
+			
+			<span class="badge badge-success mr-1">JLPT {{uichar.jlpt_old}} (old)</span>
+			<span class="badge badge-info">Grade {{uichar.grade}}</span>
+		</div>
+		<div class="col-lg-3">
+			<h5>{{uichar.meanings.join(",  ")}}</h5>
+			
+			<div>
+			<p *ngIf="uichar.jakun_readings.length>0">Kun: {{uichar.jakun_readings.join(", ")}}</p>
+			<p *ngIf="uichar.jaon_readings.length>0">On: {{uichar.jaon_readings.join(", ")}}</p>
+			</div>
+		</div>
+		
+	</div>
+	
+
 	<div *ngFor="let char of thisChars; let i = index" class="row mt-2" >
 		<div class="col-lg-2">
 			

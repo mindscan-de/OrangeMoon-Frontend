@@ -100,7 +100,38 @@ export class M2mKanjiLookupService {
 	}
 	
 	convertLookupChar(char: BackendLookupResultChar): UiLookupResultChar {
-        return null;
+		
+		let uiChar = new UiLookupResultChar(char.literal, char.stroke_count, char.grade);
+		uiChar.setJLPTold(char.jlpt);
+		
+		if(char.rm) {
+			for(let i=0;i<char.rm.length;i++) {
+				let currentrm = char.rm[i];
+				
+				if(currentrm.readings) {
+					for(let j=0;j<currentrm.readings.length;j++) {
+						let currentreading = currentrm.readings[j];
+						if(currentreading.type=="ja_on") {
+							uiChar.addOnReading(currentreading.value);
+						}
+						if(currentreading.type=="ja_kun") {
+							uiChar.addKunReading(currentreading.value);
+						}
+					}
+				}
+				
+				if(currentrm.meanings) {
+					for(let j=0;j<currentrm.meanings.length;j++) {
+						let currentmeaning = currentrm.meanings[j];
+						if(currentmeaning.m_lang=="") {
+							uiChar.addMeaning(currentmeaning.value);
+						}
+					}
+				}
+			}
+		}
+		
+        return uiChar;
     }
 
 }
