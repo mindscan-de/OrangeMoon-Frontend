@@ -8,7 +8,11 @@ export class UiLookupResultChar {
  	public radicals: any[] = [];
 	public meanings: String[] = new Array<String>();
 	public jaon_readings: String[] = new Array<String>();
-	public jakun_readings: String[] = new Array<String>(); 
+	public jakun_readings: String[] = new Array<String>();
+	
+	public ref_kkld2ed: String;
+    public ref_kic: String;
+    public ref_KKD: String;
 
 	constructor(literal: String, strokecount: number, grade: String) {
 		this.literal = literal;
@@ -34,5 +38,20 @@ export class UiLookupResultChar {
 	
 	addMeaning(meaning: String) : void {
 		this.meanings.push(meaning);
+	}
+	
+	// set reference for "Jack Halpern: The Kodansha Kanji Learners Dictionary 2nd edition"
+	setRefKKLD2ed(ref : String ): void {
+		this.ref_kkld2ed = ref;
+	}
+	
+	// set referenece for "The Japan Times: Kanji in Context" (revised Edition)
+	setRefKIC(ref: String): void {
+		this.ref_kic = ref;
+	}
+	
+	// set referenece for "Jack Halpern: The Kodansha Kanji Dictionary"
+	setRefKKD(ref: String): void {
+		this.ref_KKD = ref
 	}
 }

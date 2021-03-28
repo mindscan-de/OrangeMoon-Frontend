@@ -26,7 +26,7 @@ export class BackendLookupResultEntry {
 
 export class BackendLookupResultChar {
 	public codepoints: any[] = [];
-	public dic_refs: any[] = [];
+	public dic_refs: BackendLookupResultDictRef[] = [];
 	public freq: string = "";
 	public grade: string = "";
 	public jlpt: string = "";
@@ -43,6 +43,13 @@ export class BackendLookupResultChar {
 export class BackendLookupResultReadingsMeanings {
 	public readings: BackendLookupResultReading[] = [];
 	public meanings: BackendLookupResultMeaning[] = [];
+}
+
+export class BackendLookupResultDictRef {
+	public type: String;
+	public value: String;
+	public m_vol: String;
+	public m_page: String;
 }
 
 export class BackendLookupResultMeaning {

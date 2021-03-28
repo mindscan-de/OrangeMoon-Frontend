@@ -131,6 +131,21 @@ export class M2mKanjiLookupService {
 			}
 		}
 		
+		if(char.dic_refs) {
+			for(let i = 0; i<char.dic_refs.length; i++) {
+				let current_ref = char.dic_refs[i];
+				if(current_ref.type=="halpern_kkd") {
+					uiChar.setRefKKD(current_ref.value);
+				}
+				else if(current_ref.type=="halpern_kkld_2ed" ) {
+					uiChar.setRefKKLD2ed(current_ref.value);
+				}
+				else if(current_ref.type == "kanji_in_context") {
+					uiChar.setRefKIC(current_ref.value);
+				}
+			}
+		}
+		
         return uiChar;
     }
 
