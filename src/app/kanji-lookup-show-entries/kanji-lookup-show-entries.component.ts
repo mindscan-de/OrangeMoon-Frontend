@@ -1,14 +1,16 @@
 import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 
+// Backend Model
 import { BackendLookupResultEntry } from '../backend-service/backend-model/backend-lookup-result'
-import { M2mKanjiLookupService } from '../m2m/m2m-kanji-lookup.service';
- 
 
+// UI Model
 import { UiLookupResultEntry } from './ui-model/ui-lookup-result-entry';
 
+// M2M transforamation from BackendModel to UI-Model
+import { M2mKanjiLookupService } from '../m2m/m2m-kanji-lookup.service';
 
 /**
- * This component is only for processing the lookup-entries and present them.
+ * This component is only for processing the lookup-entries and presenting them.
  */
 @Component({
   selector: 'app-kanji-lookup-show-entries',
@@ -46,8 +48,8 @@ export class KanjiLookupShowEntriesComponent implements OnInit, OnChanges {
 	ngOnChanges(changes:SimpleChanges) :void {
 		if(changes.entries) {
 			// TODO: we might convert that into a ui-model
-			console.log("entries changed - printing entries");
-			console.log(changes.entries);
+			// console.log("entries changed - printing entries");
+			// console.log(changes.entries);
 		}
 	}
 
