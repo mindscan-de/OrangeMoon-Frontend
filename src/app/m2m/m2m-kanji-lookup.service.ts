@@ -49,10 +49,8 @@ export class M2mKanjiLookupService {
 						}
 						text = text + " see also: " + infoArr.join("; ");
 					}
-					else
-					{
-						uiElement.addOtherForm( entry.kanji[j].text );
-					}
+					
+					uiElement.addOtherForm( text );
 				}
 				
 				for(let j = 1; j<entry.kana.length ; j++) {
