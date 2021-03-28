@@ -17,7 +17,6 @@ import { UiLookupResultEntry } from './ui-model/ui-lookup-result-entry';
 })
 export class KanjiLookupShowEntriesComponent implements OnInit, OnChanges {
 	
-	public thisEntries: BackendLookupResultEntry[] = [];
 	public uiEntries: UiLookupResultEntry[] = [];
 	
 	constructor(private m2m: M2mKanjiLookupService) { }
@@ -30,7 +29,6 @@ export class KanjiLookupShowEntriesComponent implements OnInit, OnChanges {
 		let uiEntries: UiLookupResultEntry[] = new Array<UiLookupResultEntry>(entries.length);
 		
 		if(entries.length >0) {
-			// TODO: we might convert that into a ui-model
 			for(let i=0;i<entries.length; i++) {
 				uiEntries[i] = this.m2m.convertLookupEntry(entries[i]);
 			}
@@ -42,7 +40,6 @@ export class KanjiLookupShowEntriesComponent implements OnInit, OnChanges {
 		{
 			
 		}
-		this.thisEntries = entries;
 		this.uiEntries = uiEntries;
 	}
 
