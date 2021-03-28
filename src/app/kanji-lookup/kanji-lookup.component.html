@@ -23,43 +23,6 @@
 	</div>
 	
 	<app-kanji-lookup-show-entries [entries]="lookupResult.entries"></app-kanji-lookup-show-entries>
-
-	<div *ngFor="let char of lookupResult.chars; let i = index" class="row mt-2" >
-		<div class="col-lg-2">
-			
-			<span>{{char.stroke_count}} strokes</span>
-			<h3 class="display-3">{{char.literal}}</h3>
-			
-			<span class="badge badge-success mr-1">JLPT {{char.jlpt}} (old)</span>
-			<span class="badge badge-info">Grade {{char.grade}}</span>
-			
-		</div>
-		
-		<div class="col-lg-4">
-			<ul *ngFor="let rm of char.rm;">
-				<ng-container *ngFor="let meaning of rm.meanings; ">
-					<li *ngIf="meaning.m_lang==''">{{meaning.value}}</li>
-				</ng-container>
-			</ul>
-		</div>
-		
-		<div class="col-lg-4">
-			<h5>Kun</h5>
-			<ul *ngFor="let rm of char.rm;">
-				<ng-container *ngFor="let reading of rm.readings; ">
-					<li *ngIf="reading.type=='ja_kun'">{{reading.value}}</li>
-				</ng-container>
-			</ul>
-			
-			<h5>On</h5>
-			<ul *ngFor="let rm of char.rm;">
-				<ng-container *ngFor="let reading of rm.readings; ">
-					<li *ngIf="reading.type=='ja_on'">{{reading.value}}</li>
-				</ng-container>
-			</ul>
-		</div>
-		
-	</div>
-	
+	<app-kanji-lookup-show-chars [chars]="lookupResult.chars"></app-kanji-lookup-show-chars>
 
 </div>
