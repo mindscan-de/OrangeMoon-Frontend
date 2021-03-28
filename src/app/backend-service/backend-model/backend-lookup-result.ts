@@ -1,6 +1,9 @@
 export class BackendLookupResult {
+	// the looked up chars (in case of non strict values, alternatives are also looked up)
 	public chars: BackendLookupResultChar[] = [];
+	// the entry itself
 	public entries: BackendLookupResultEntry[] = [];
+	// names and places
 	public names: BackendLookupResultName[] = [];
 }
 
@@ -12,9 +15,9 @@ export class BackendLookupResultName {
 
 export class BackendLookupResultEntry {
 	public idseq: string = "";
-	// the reading::pri,text
+	// the reading::pri,text,restr
 	public kana: any[] = [];
-	// the kanji::pri,text
+	// the kanji::pri,text,info
 	public kanji: any[] = [];
 	// translation and crossreferences::SenseGloss,pos,xref
 	public senses: any[] = [];
