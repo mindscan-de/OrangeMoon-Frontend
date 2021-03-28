@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 
 
 // import backend models
-import { BackendLookupResultEntry } from '../backend-service/backend-model/backend-lookup-result';
+import { BackendLookupResultEntry, BackendLookupResultChar } from '../backend-service/backend-model/backend-lookup-result';
+
 
 // import ui-models
 import { UiLookupResultEntry } from  '../kanji-lookup-show-entries/ui-model/ui-lookup-result-entry';
+import { UiLookupResultChar } from '../kanji-lookup-show-chars/ui-model/ui-lookup-result-char';
 
 @Injectable({
   providedIn: 'root'
@@ -97,5 +99,10 @@ export class M2mKanjiLookupService {
 		}
 		
 		return uiElement;
-	} 
+	}
+	
+	convertLookupChar(char: BackendLookupResultChar): UiLookupResultChar {
+        return null;
+    }
+
 }

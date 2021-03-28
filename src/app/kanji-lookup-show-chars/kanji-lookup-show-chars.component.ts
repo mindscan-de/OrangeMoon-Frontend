@@ -31,6 +31,19 @@ export class KanjiLookupShowCharsComponent implements OnInit {
 	public set chars(chars: BackendLookupResultChar[]) {
 		let uiChars: UiLookupResultChar[] = new Array<UiLookupResultChar>(chars.length);
 		
+		if(chars.length >0) {
+			for(let i=0;i<chars.length; i++) {
+				uiChars[i] = this.m2m.convertLookupChar(chars[i]);
+			}
+			
+			console.log("chars set - printing entries");
+			console.log(chars);
+		}
+		else
+		{
+			
+		}
+		
 		this.uiChars = uiChars;
 		this.thisChars = chars;
 	}
