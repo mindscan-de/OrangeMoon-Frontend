@@ -20,7 +20,6 @@ import { M2mKanjiLookupService } from '../m2m/m2m-kanji-lookup.service';
 export class KanjiLookupShowCharsComponent implements OnInit {
 
 	public uiChars: UiLookupResultChar[] = [];
-	public thisChars: BackendLookupResultChar[] = [];
 
 	constructor(private m2m: M2mKanjiLookupService) { }
 
@@ -45,7 +44,6 @@ export class KanjiLookupShowCharsComponent implements OnInit {
 		}
 		
 		this.uiChars = uiChars;
-		this.thisChars = chars;
 	}
 
 }
