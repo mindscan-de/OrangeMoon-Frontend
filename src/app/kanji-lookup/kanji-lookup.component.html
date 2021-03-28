@@ -21,8 +21,13 @@
 			</form>
 		</div>
 	</div>
-	
-	<app-kanji-lookup-show-entries [entries]="lookupResult.entries"></app-kanji-lookup-show-entries>
-	<app-kanji-lookup-show-chars [chars]="lookupResult.chars"></app-kanji-lookup-show-chars>
+</div>
 
+<div class="container">
+	<div class="col">
+		<app-kanji-lookup-show-entries [entries]="lookupResult.entries"></app-kanji-lookup-show-entries>
+	</div>
+	<div class="col">
+		<app-kanji-lookup-show-chars [chars]="lookupResult.chars"></app-kanji-lookup-show-chars>
+	</div>
 </div>

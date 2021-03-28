@@ -1,19 +1,18 @@
-	<div class="col">
 	<h4>Word related kanji</h4>
 	<div *ngFor="let uichar of uiChars" class="row mt-2">
-		<div class="col-lg-1">
+		<div class="col-lg-3">
 			<span class="badge badge-light">{{uichar.stroke_count}} strokes</span>
 			<h3 class="display-3">{{uichar.literal}}</h3>
 			
 			<span class="badge badge-success mr-1">JLPT {{uichar.jlpt_old}} (old)</span>
 			<span class="badge badge-info">Grade {{uichar.grade}}</span>
 		</div>
-		<div class="col-lg-3">
+		<div class="col-lg-9">
 			<h5>{{uichar.meanings.join(",  ")}}</h5>
 			
 			<div>
-			<p *ngIf="uichar.jakun_readings.length>0">Kun: {{uichar.jakun_readings.join(", ")}}</p>
-			<p *ngIf="uichar.jaon_readings.length>0">On: {{uichar.jaon_readings.join(", ")}}</p>
+			<p *ngIf="uichar.jakun_readings.length>0">Kun: {{uichar.jakun_readings.join("、")}}</p>
+			<p *ngIf="uichar.jaon_readings.length>0">On: {{uichar.jaon_readings.join("、")}}</p>
 			<p>
 				<span class="badge badge-secondary mr-1">KKD: {{uichar.ref_KKD}}</span> 
 				<span class="badge badge-secondary mr-1">KKLD2ed: {{uichar.ref_kkld2ed}}</span>
@@ -24,5 +23,4 @@
 			</div>
 		</div>
 		
-	</div>
 	</div>
