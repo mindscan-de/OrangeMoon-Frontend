@@ -24,3 +24,36 @@
 		</div>
 	</div>
 
+	<div *ngFor="let entry of thisEntries; let i = index" class="row mt-2 mb-5" >
+		<div class="col-lg-2">
+			<ng-container *ngFor="let kanji of entry.kanji;">
+				<h3 class="display-3">{{kanji.text}}</h3>
+			</ng-container>
+			<ul>
+			<ng-container *ngFor="let kana of entry.kana;">
+				<li>{{kana.text}}</li>
+			</ng-container>
+			</ul>
+		</div>
+		
+		<div class="col-lg-4">
+			<ul>
+				<ng-container *ngFor="let sense of entry.senses;">
+				<li *ngFor="let translation of sense.SenseGloss; ">{{translation.text}}</li>
+				</ng-container>
+				<ng-container *ngFor="let sense of entry.senses;">
+				<li *ngFor="let ref of sense.xref; ">see also: {{ref}}</li>
+				</ng-container>
+			</ul>
+		</div>
+
+		<div class="col-lg-6">
+			<ul>
+				<ng-container *ngFor="let sense of entry.senses;">
+				<li *ngFor="let pos of sense.pos; ">{{pos}}</li>
+				</ng-container>
+			</ul>
+		</div>
+		
+	</div>
+
