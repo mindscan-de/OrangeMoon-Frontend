@@ -4,6 +4,7 @@ export class UiLookupResultEntry {
 	public mainKanji: String = "";
 	public mainKana: String = "";
 	public senses: Array<UiLookupResultEntrySense> = new Array<UiLookupResultEntrySense>();
+	public otherForms: Array<String> = new Array<String>();
 	
 	constructor(idseq:String) {
 		this.idseq = idseq;
@@ -14,17 +15,24 @@ export class UiLookupResultEntry {
 		this.mainKanji	= mainKanji;
     }
 	
-	addSense( pos: String, gloss: String): void {
+	addSense( pos: String, gloss: String, crossref:String ): void {
 		let newsense:UiLookupResultEntrySense = new UiLookupResultEntrySense(); 
 		
 		newsense.pos = pos;
 		newsense.translation = gloss;
+		newsense.xref = crossref;
 		
 		this.senses.push(newsense);
 	}
+	
+    addOtherForm(otherForm: String) {
+        this.otherForms.push(otherForm);
+    }
+	
 }
 
 export class UiLookupResultEntrySense {
 	public pos: String;
 	public translation: String;
+	public xref:String;
 }

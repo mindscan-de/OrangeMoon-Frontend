@@ -22,6 +22,41 @@ export class M2mKanjiLookupService {
 		if( entry.kanji.length > 0 && entry.kana.length > 0) {
 			// TODO: copy main kanji at position 0
 			uiElement.setMainKanjiData(entry.kanji[0].text, entry.kana[0].text);
+			
+			if( entry.kanji.length == 1 && entry.kana.length > 1) {
+				for(let j = 1; j<entry.kana.length ; j++) {
+					uiElement.addOtherForm( entry.kana[j].text );
+				}
+			} else {
+				for(let j = 1; j<entry.kanji.length ; j++) {
+					
+					let text = entry.kanji[j].text;
+					
+					if(entry.kanji[j].info) {
+						let infoArr: String[] = new Array<String>();
+						for(let l = 0;l<entry.kanji[j].info.length;l++) {
+							infoArr.push(entry.kanji[j].info[l]);
+						}
+						text = text + "  (" + infoArr.join("; ") + ")";
+					}
+					
+					if(entry.kanji[j].xref) {
+						let infoArr: String[] = new Array<String>();
+						for(let l = 0;l<entry.kanji[j].xref.length;l++) {
+							infoArr.push(entry.kanji[j].xref[l]);
+						}
+						text = text + " see also: " + infoArr.join("; ");
+					}
+					else
+					{
+						uiElement.addOtherForm( entry.kanji[j].text );
+					}
+				}
+				
+				for(let j = 1; j<entry.kana.length ; j++) {
+					uiElement.addOtherForm( entry.kana[j].text );
+				}
+			}
 		}
 		else
 		{
@@ -40,6 +75,14 @@ export class M2mKanjiLookupService {
 				}
 			}
 			
+			let xrefsArr = new Array<String>();
+			if(currentSense.xref) {
+				for(let l = 0;l<currentSense.xref.length;l++) {
+					xrefsArr.push(currentSense.xref[l]);
+				}
+			}
+
+			
 			let translations = new Array<String>();
 			for(let j=0; j<currentSense.SenseGloss.length;j++) {
 				
@@ -50,7 +93,7 @@ export class M2mKanjiLookupService {
 				translations.push(translation);
 			}
 			
-			uiElement.addSense(posArr.join("; "), translations.join("; ") );
+			uiElement.addSense(posArr.join("; "), translations.join("; "), xrefsArr.join("; ") );
 		}
 		
 		return uiElement;
