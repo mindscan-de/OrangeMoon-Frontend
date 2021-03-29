@@ -82,6 +82,8 @@ export class M2mKanjiLookupService {
 				}
 			}
 
+			// TODO: currentSense.SenseInfo (e.g. shima)
+			// TODO: currentSense.misc (e.g. shima) "word usually written using kana alone"
 			
 			let translations = new Array<String>();
 			for(let j=0; j<currentSense.SenseGloss.length;j++) {
