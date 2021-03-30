@@ -24,6 +24,8 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
     public selectableRadicals: UiModelSelectableKanji[] = new Array<UiModelSelectableKanji>();
 	public retrievedKanji: BackendKanjiAndRadicalData = new BackendKanjiAndRadicalData();
 	public radicalTree: BackendKanjiRadicalsWithStrokes = new BackendKanjiRadicalsWithStrokes();
+	
+	public copiedKanji: string = "";
 
 	// Keeps the current state of the current selected radicals
 	private combinedRadicals: Set<UiModelSelectableKanji> = new Set<UiModelSelectableKanji>();
@@ -99,4 +101,11 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
 		return theAciveRadicals.includes(radical.kanji);
 	}
 
+	copyKanjiToOutput(kanji:string): void {
+		this.copiedKanji+=kanji;
+	}
+	
+	clearKanjiToOutput(): void {
+		this.copiedKanji="";
+	}
 }

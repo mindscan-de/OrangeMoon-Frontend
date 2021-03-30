@@ -18,12 +18,21 @@
 		</div>
 		
 		<div class="col-lg-3  mt-1">
-			<h4>Result</h4>
+			<h4 class="heading-4">Copy Area</h4>
+			<div class="display-4">
+				{{copiedKanji}}
+			</div>
+			<div>
+				<button type="button" class="btn btn-outline-secondary" (click)="clearKanjiToOutput()">Clear</button>
+			</div>
+
+			<h4 class="heading-4">Result</h4>
 			<ul class="list-group">
  				<li class="list-group-item">
-					<button *ngFor="let kanji of retrievedKanji.values" type="button" class="btn btn-outline-secondary kanji-m">{{kanji}}</button>
+					<button *ngFor="let kanji of retrievedKanji.values" type="button" class="btn btn-outline-secondary kanji-m" (click)="copyKanjiToOutput(kanji)">{{kanji}}</button>
 				</li>
 			</ul>
+			
 		</div>
 		
 	</div>
