@@ -15,10 +15,11 @@ import { BackendLookupResult } from '../backend-service/backend-model/backend-lo
 })
 export class KanjiLookupComponent implements OnInit {
 	
-	public currentKanjiQueryString: string="test";
+	public currentKanjiQueryString: string="";
 	public lookupResult: BackendLookupResult = new BackendLookupResult();
 
 	constructor(private activatedRoute: ActivatedRoute, private router: Router, private backendService: KanjiDataBackendService,) {
+		this.currentKanjiQueryString = "";
   		// subscribe to page parameters		
   		this.activatedRoute.queryParams.subscribe( pageParameters => {
 	 		this.onContentPageParametersProvided( pageParameters );
@@ -26,12 +27,13 @@ export class KanjiLookupComponent implements OnInit {
 	}
 	
 	ngOnInit(): void {
+
 	}
 	
 	onContentPageParametersProvided( pageParameters ):void { 
 		this.currentKanjiQueryString = this.activatedRoute.snapshot.queryParams["q"];
 		
-		if(this.currentKanjiQueryString.trim() != "") {
+		if(this.currentKanjiQueryString && this.currentKanjiQueryString.trim() != "") {
 			this.backendService.strictLookupKanji(this.currentKanjiQueryString).subscribe(
 				data => this.onLookupResultLoaded(data),
 				error => this.onLookupResultFailed(error)
