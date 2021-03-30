@@ -1,10 +1,10 @@
 	<div *ngFor="let uientry of uiEntries;" class="row mt-2 mb-5" >
-		<div class="col-lg-3">
-			<h5 class="display-4">{{uientry.mainKanji}}</h5>
+		<div class="col-3">
+			<h1 class="heading-4">{{uientry.mainKanji}}</h1>
 			{{uientry.mainKana}}
 		</div>
 		
-		<div class="col-lg-9">
+		<div class="col-9">
 			<ng-container *ngFor="let sense of uientry.senses">
 				<span class="text-muted">{{sense.pos}}</span>
 				<ul>
