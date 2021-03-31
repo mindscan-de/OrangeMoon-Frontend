@@ -29,6 +29,20 @@ export class KanjiLookupShowNamesComponent implements OnInit {
 	@Input()
 	public set names(names: BackendLookupResultName[]) {
 		let uiNames: UiLookupResultName[] = new Array<UiLookupResultName>(names.length);
+
+		if(names.length >0) {
+			for(let i=0;i<names.length; i++) {
+				uiNames[i] = this.m2m.convertLookupName(names[i]);
+			}
+			
+			console.log("Names: ");
+			console.log(names)
+		}
+		else
+		{
+			
+		}
+		
 		
 		this.uiNames = uiNames;
 	}

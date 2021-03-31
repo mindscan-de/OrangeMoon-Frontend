@@ -6,12 +6,18 @@
 	</div>
 	
 	
-	<div *ngFor="let uiname of uiNames" class="row mt-2 mb-5">
+	<div *ngFor="let uiName of uiNames;" class="row mt-2 mb-5">
 		<div class="col-3">
-			<h1 class="heading-4">KANJI</h1>
-			TODO: とど-reading
+			<h1 class="heading-1">{{uiName.mainKanji}}</h1>
+			{{uiName.mainKana}}
 		</div>
 		<div class="col-9">
-			THIS IS THE CONTENT...
+				<ng-container *ngFor="let sense of uiName.senses">
+				<span class="text-muted">{{sense.type}}</span>
+				<ul>
+					<li>{{sense.translation}} </li>
+				</ul>
+			</ng-container>
+
 		</div>
 	</div>
