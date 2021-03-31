@@ -1,1 +1,17 @@
-<p>TODO: kanji-lookup-show-names!</p>
+	<h4>Search related Names</h4>
+	<div *ngIf="uiNames;" class="row mt-2 mb-5">
+		<div class="col">
+			None.
+		</div>
+	</div>
+	
+	
+	<div *ngFor="let uiname of uiNames" class="row mt-2 mb-5">
+		<div class="col-3">
+			<h1 class="heading-4">KANJI</h1>
+			TODO: とど-reading
+		</div>
+		<div class="col-9">
+			THIS IS THE CONTENT...
+		</div>
+	</div>
