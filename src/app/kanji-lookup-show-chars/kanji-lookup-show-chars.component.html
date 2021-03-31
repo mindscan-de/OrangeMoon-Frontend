@@ -1,4 +1,9 @@
-	<h4>Word related kanji</h4>
+	<h4>Word/Search related kanji</h4>
+	<div *ngIf="uiChars.length==0" class="row mt-2">
+		<div class="col">
+			None.
+		</div>
+	</div>
 	<div *ngFor="let uichar of uiChars" class="row mt-2">
 		<div class="col-lg-3">
 			<span class="badge badge-light">{{uichar.stroke_count}} strokes</span>
