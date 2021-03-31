@@ -60,7 +60,9 @@ export class M2mKanjiLookupService {
 		}
 		else
 		{
-			// set Entry to empty -> will hopfully not show up.  			
+			// TODO: well what if the Kanji is missing or the Kana is missing?
+			// Digimon?
+			// set Entry to empty -> will hopfully not show up.	
 		}
 		
 		// process the senses
@@ -104,6 +106,8 @@ export class M2mKanjiLookupService {
 	convertLookupName(name: BackendLookupResultName ) : UiLookupResultName {
 		let uiName = new UiLookupResultName(name.idseq);
 		
+		// Well if there is no kanji, then at least all the kana parts should be presented...
+		// TODO: e.g. search for SuperFamicon (スーパーファミコン) or (メガドライブ)
 		if( name.kanji.length > 0 && name.kana.length > 0) {
 			uiName.setMainKanjiData(name.kanji[0].text, name.kana[0].text);
 			
