@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 
 
 // import backend models
-import { BackendLookupResultEntry, BackendLookupResultChar } from '../backend-service/backend-model/backend-lookup-result';
+import { BackendLookupResultEntry, BackendLookupResultChar, BackendLookupResultName } from '../backend-service/backend-model/backend-lookup-result';
 
 
 // import ui-models
 import { UiLookupResultEntry } from  '../kanji-lookup-show-entries/ui-model/ui-lookup-result-entry';
 import { UiLookupResultChar } from '../kanji-lookup-show-chars/ui-model/ui-lookup-result-char';
+import { UiLookupResultName } from '../kanji-lookup-show-names/ui-model/ui-lookup-result-name';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,6 @@ export class M2mKanjiLookupService {
 		
 		// Process the kanji and Kana - is complicated
 		if( entry.kanji.length > 0 && entry.kana.length > 0) {
-			// TODO: copy main kanji at position 0
 			uiElement.setMainKanjiData(entry.kanji[0].text, entry.kana[0].text);
 			
 			if( entry.kanji.length == 1 && entry.kana.length > 1) {
@@ -71,7 +71,7 @@ export class M2mKanjiLookupService {
 			
 			if(currentSense.pos) {
 				for(let j=0; j<currentSense.pos.length;j++) {
-					posArr.push(currentSense.pos[j])
+					posArr.push(currentSense.pos[j]);
 				}
 			}
 			
@@ -90,7 +90,7 @@ export class M2mKanjiLookupService {
 				
 				let translation = currentSense.SenseGloss[j].text;
 				if(currentSense.stagr) {
-					translation = currentSense.stagr[0] + " (esp. when) " + translation 
+					translation = currentSense.stagr[0] + " (esp. when) " + translation;
 				}
 				translations.push(translation);
 			}
@@ -99,6 +99,38 @@ export class M2mKanjiLookupService {
 		}
 		
 		return uiElement;
+	}
+	
+	convertLookupName(name: BackendLookupResultName ) : UiLookupResultName {
+		let uiName = new UiLookupResultName(name.idseq);
+		
+		if( name.kanji.length > 0 && name.kana.length > 0) {
+			uiName.setMainKanjiData(name.kanji[0].text, name.kana[0].text);
+			
+			if(name.kanji.length>1 || name.kana.length >1 ) {
+				console.log("TODO convertLookupName: more than one kanji or reading found...");
+			}
+		}
+		
+		// process the senses
+		for( let i = 0; i< name.senses.length;i++ ) {
+			let currentSense = name.senses[i];
+			
+			let translations = new Array<String>();
+			for(let j=0; j<currentSense.SenseGloss.length;j++) {
+				let translation = currentSense.SenseGloss[j].text;
+				translations.push(translation);
+			}
+			
+			let type="unknown";
+			if(currentSense.name_type && currentSense.name_type.length>0){
+				type = currentSense.name_type[0];
+			}
+			
+			uiName.addSense(translations.join("; "), type);
+		}		
+		
+		return uiName;
 	}
 	
 	convertLookupChar(char: BackendLookupResultChar): UiLookupResultChar {

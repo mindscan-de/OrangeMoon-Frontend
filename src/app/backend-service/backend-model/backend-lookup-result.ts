@@ -11,6 +11,7 @@ export class BackendLookupResultName {
 	public idseq: string = "";
 	public kana: any[] = [];
 	public kanji: any[] = [];
+	public senses: any[] = [];
 }
 
 export class BackendLookupResultEntry {
