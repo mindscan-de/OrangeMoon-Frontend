@@ -108,4 +108,9 @@ export class KanjiByRadicalsSelectorComponent implements OnInit {
 	clearKanjiToOutput(): void {
 		this.copiedKanji="";
 	}
+	
+	clearSelection():void {
+		const myCopy = new Set<UiModelSelectableKanji>(this.combinedRadicals);
+        myCopy.forEach(radical => this.toggleRadical(radical));
+	}
 }
