@@ -45,8 +45,8 @@ similar. At least not yet.
 
 * Selection of kanji by its radicals **[done]**
 
-![](./doc/Kanji_by_radicals_selection_hashi.png =300px)
-![](./doc/Kanji_by_radicals_selection_hashi_all.png =300px)
+![SelectHashiTwoRadicals](/doc/Kanji_by_radicals_selection_hashi.png =300px)
+![SelecthashiThreeRadicals](/doc/Kanji_by_radicals_selection_hashi_all.png =300px)
 
 * input hiragana / katakana (via OS-IME) and lookup the word in the dictionary **[done]**
 ** lookup names, words and kanji **[done]**
