@@ -15,6 +15,7 @@ import { KanjiLookupShowCharsComponent } from './kanji-lookup-show-chars/kanji-l
 import { KanjiLookupShowEntriesComponent } from './kanji-lookup-show-entries/kanji-lookup-show-entries.component';
 import { KanjiLookupShowNamesComponent } from './kanji-lookup-show-names/kanji-lookup-show-names.component';
 import { KanjiTMComponent } from './kanji-tm/kanji-tm.component';
+import { KanjiQuizComponent } from './kanji-quiz/kanji-quiz.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { KanjiTMComponent } from './kanji-tm/kanji-tm.component';
     KanjiLookupShowCharsComponent,
     KanjiLookupShowEntriesComponent,
     KanjiLookupShowNamesComponent,
-    KanjiTMComponent
+    KanjiTMComponent,
+    KanjiQuizComponent
   ],
   imports: [
     BrowserModule,
