@@ -40,3 +40,27 @@ javascript and hosted on something which is serving static files. The backend
 is quite primitive, but I don't care, because it is a single user environment.
 I just want it to just work. There is basically no need for scale or something 
 similar. At least not yet.
+
+# MVP
+
+* Selection of kanji by its radicals **[done]**
+* input hiragana / katakana (via OS-IME) and lookup the word in the dictionary **[done]**
+** lookup names, words and kanji **[done]**
+
+# TODO
+
+I will give it some thoughts, but at the moment I don't plan to implement too 
+much. Maybe i will do the quiz mode next, but nothing too fancy.
+
+# Nice to have
+
+A combined input method of selection of kanji by radicals with the simple 
+input field from the lookup page would be nice. Switching forth and back 
+the pages is a bit annoying.
+
+# God mode 
+
+* Develop an IME for english/german-keyboard to japanese, without using the OS based IME
+** An input field, which can be switched back between hiragana mode and western mode
+** A mode where a kanji can be selected by radicals
+** An NMT based transliteration from romaji to mixed hiragana, katakana, kanji    
