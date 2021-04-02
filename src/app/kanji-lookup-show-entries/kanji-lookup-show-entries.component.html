@@ -11,13 +11,15 @@
 					<li>{{sense.translation}} <span *ngIf="sense.xref" class="text-muted">&mdash; see also {{sense.xref}}</span> </li>
 				</ul>
 			</ng-container>
-			
+						
 			<ng-container *ngIf="uientry.otherForms.length > 0">
 				<span class="text-muted">Other Form(s)</span>
 				<ul *ngFor="let otherform of uientry.otherForms">
 					<li>{{otherform}}</li>
 				</ul>
 			</ng-container>
+			
+			<span>go to: <a class="text-muted" [routerLink]="['/kanjilookup']" [queryParams]="{q: uientry.mainKanji}" queryParamsHandling="merge" >{{uientry.mainKanji}}</a></span>
 			
 		</div>
 	</div>
