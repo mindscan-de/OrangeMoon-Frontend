@@ -11,6 +11,8 @@ import { BackendKanjiData } from './backend-model/backend-kanji-data';
 import { BackendKanjiAndRadicalData } from './backend-model/backend-kanji-and-radical-data';
 import { BackendKanjiRadicalsWithStrokes } from './backend-model/backend-kanji-radicals-with-strokes';
 import { BackendLookupResult } from './backend-model/backend-lookup-result';
+import { BackendQuizList } from './backend-model/backend-quiz-list';
+import { BackendQuizData } from './backend-model/backend-quiz-data';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +21,11 @@ export class KanjiDataBackendService {
 	
 	private _getKanjiRadicals            = '/OrangeMoon/rest/getKanjiRadicals';
 	private _getKanjiRadicalsWithStrokes = '/OrangeMoon/rest/getKanjiRadicalsWithStrokes';
-	private _getKanjiBySelectedRadicals  = '/OrangeMoon/rest/getKanjiBySelectedRadicals'; 
+	private _getKanjiBySelectedRadicals  = '/OrangeMoon/rest/getKanjiBySelectedRadicals';
 	private _getKanjiBySelectedRadicals2 = '/OrangeMoon/rest/getKanjiBySelectedRadicals2';
-	private _lookupStrictKanji           = '/OrangeMoon/rest/strictLookupKanji';	
+	private _lookupStrictKanji           = '/OrangeMoon/rest/strictLookupKanji';
+	private _getQuizList                 = '/OrangeMoon/rest/getQuizList';
+	private _getQuizData                 = '/OrangeMoon/rest/getQuizData';
 	
 	constructor( private httpClient : HttpClient ) { }
 
@@ -67,5 +71,19 @@ export class KanjiDataBackendService {
 		httpParameters = httpParameters.append("selected",selectedKanji );
 		
 		return this.httpClient.get<BackendLookupResult>(this._lookupStrictKanji, {params: httpParameters})
+	}
+	
+	getKanjiQuizList(): Observable<BackendQuizList> {
+		let httpParameters = new HttpParams({encoder:new CustomEncoder()});
+		
+		return this.httpClient.get<BackendQuizList>(this._getQuizList, {params: httpParameters})
+	}
+	
+	getKanjiQuizData(quizname:string): Observable<BackendQuizData> {
+		let httpParameters = new HttpParams({encoder:new CustomEncoder()});
+		
+		httpParameters = httpParameters.append('quizname', quizname);
+		
+		return this.httpClient.get<BackendQuizData>(this._getQuizData, {params: httpParameters})
 	}
 }
