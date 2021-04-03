@@ -15,6 +15,10 @@ export class ShowQuizDataDialogComponent  {
 
 	setDialogData( quiz_name : String ): void {
 		// TODO subscribe to the kanji data...
+		
+		// will allow to show the quiz data
+		// will allow private quiz games (and continue?) 
+		
 	}
 	
 	onClose() : void {
