@@ -7,15 +7,18 @@
 	
 	<app-main-navigation></app-main-navigation>
 
-	<div class="row">
-		<div class="col-5">
-		</div>
+	<div class="row mt-2">
 		<div class="col-2">
 			<div class="list-group">
-				<button type="button" class="list-group-item list-group-item-action" (click)="onViewQuizLists()">View Lists</button>
 				<button type="button" class="list-group-item list-group-item-action" (click)="onCreateQuizGame()">Create Game</button>
 				<button type="button" class="list-group-item list-group-item-action" (click)="onJoinQuizGame()">Join Game</button>
 			</div>
+		
+		</div>
+		<div class="col-5">
+			<ul class="list-group">
+				<li *ngFor="let item of kanjiQuizList" class="list-group-item list-group-item-action">{{item.name}}<span class="badge badge-secondary float-right m-1">{{item.items}}</span></li>
+			</ul>
 		</div>
 		<div class="col-5">
 		</div>

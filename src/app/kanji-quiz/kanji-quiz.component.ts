@@ -1,15 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 
+import {KanjiDataBackendService } from '../backend-service/kanji-data-backend.service';
+
+
+import { BackendQuizList, BackendQuizListItem } from '../backend-service/backend-model/backend-quiz-list';
+
 @Component({
   selector: 'app-kanji-quiz',
   templateUrl: './kanji-quiz.component.html',
   styleUrls: ['./kanji-quiz.component.css']
 })
 export class KanjiQuizComponent implements OnInit {
+	
+	public kanjiQuizList: BackendQuizListItem[]= []; 
 
-	constructor() { }
+	constructor(private backendService: KanjiDataBackendService) { }
 
 	ngOnInit(): void {
+		this.backendService.getKanjiQuizList().subscribe(
+			data=> this.onKanjiQuizListLoaded(data),
+			error=>{}
+		);
+	}
+	
+	onKanjiQuizListLoaded( listdata : BackendQuizList ) : void {
+		this.kanjiQuizList = listdata.values;
 	}
 
 	onViewQuizLists() : void {
