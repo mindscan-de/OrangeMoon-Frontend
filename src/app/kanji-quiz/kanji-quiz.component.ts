@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import {KanjiDataBackendService } from '../backend-service/kanji-data-backend.service';
-
-
+// Kanji Backend
+import { KanjiDataBackendService } from '../backend-service/kanji-data-backend.service';
 import { BackendQuizList, BackendQuizListItem } from '../backend-service/backend-model/backend-quiz-list';
+
+// Modal dialogs
+import { ShowQuizDataDialogComponent } from './show-quiz-data-dialog/show-quiz-data-dialog.component'; 
 
 @Component({
   selector: 'app-kanji-quiz',
@@ -14,7 +17,7 @@ export class KanjiQuizComponent implements OnInit {
 	
 	public kanjiQuizList: BackendQuizListItem[]= []; 
 
-	constructor(private backendService: KanjiDataBackendService) { }
+	constructor(private backendService: KanjiDataBackendService, private modalService: NgbModal) { }
 
 	ngOnInit(): void {
 		this.backendService.getKanjiQuizList().subscribe(
@@ -25,6 +28,18 @@ export class KanjiQuizComponent implements OnInit {
 	
 	onKanjiQuizListLoaded( listdata : BackendQuizList ) : void {
 		this.kanjiQuizList = listdata.values;
+	}
+	
+	showQuizData(quizname:String) : void {
+		const modalref = this.modalService.open( ShowQuizDataDialogComponent, {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl'});
+
+		modalref.componentInstance.setDialogData(quizname);
+
+		modalref.result.then(
+			(result)=> {},
+			(reason)=> {}
+		);
+
 	}
 
 	onViewQuizLists() : void {

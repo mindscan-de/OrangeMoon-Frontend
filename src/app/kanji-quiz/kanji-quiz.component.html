@@ -17,7 +17,7 @@
 		</div>
 		<div class="col-5">
 			<ul class="list-group">
-				<li *ngFor="let item of kanjiQuizList" class="list-group-item list-group-item-action">{{item.name}}<span class="badge badge-secondary float-right m-1">{{item.items}}</span></li>
+				<li *ngFor="let item of kanjiQuizList" class="list-group-item list-group-item-action" (click)="showQuizData(item.name)">{{item.name}}<span class="badge badge-secondary float-right m-1">{{item.items}}</span></li>
 			</ul>
 		</div>
 		<div class="col-5">
