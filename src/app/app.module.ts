@@ -17,6 +17,7 @@ import { KanjiLookupShowNamesComponent } from './kanji-lookup-show-names/kanji-l
 import { KanjiTMComponent } from './kanji-tm/kanji-tm.component';
 import { KanjiQuizComponent } from './kanji-quiz/kanji-quiz.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ShowQuizDataDialogComponent } from './kanji-quiz/show-quiz-data-dialog/show-quiz-data-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     KanjiLookupShowEntriesComponent,
     KanjiLookupShowNamesComponent,
     KanjiTMComponent,
-    KanjiQuizComponent
+    KanjiQuizComponent,
+    ShowQuizDataDialogComponent
   ],
   imports: [
     BrowserModule,
