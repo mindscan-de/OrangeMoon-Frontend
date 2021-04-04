@@ -3,12 +3,15 @@ import { Injectable } from '@angular/core';
 
 // import backend models
 import { BackendLookupResultEntry, BackendLookupResultChar, BackendLookupResultName } from '../backend-service/backend-model/backend-lookup-result';
+import { BackendQuizData } from '../backend-service/backend-model/backend-quiz-data';
 
 
 // import ui-models
 import { UiLookupResultEntry } from  '../kanji-lookup-show-entries/ui-model/ui-lookup-result-entry';
 import { UiLookupResultChar } from '../kanji-lookup-show-chars/ui-model/ui-lookup-result-char';
 import { UiLookupResultName } from '../kanji-lookup-show-names/ui-model/ui-lookup-result-name';
+import { UiQuizData, UiQuizDataItem } from '../kanji-quiz/show-quiz-data-dialog/ui-model/ui-quiz-data';
+
 
 @Injectable({
   providedIn: 'root'
@@ -186,5 +189,40 @@ export class M2mKanjiLookupService {
 		
         return uiChar;
     }
+
+	convertQuizData( quizData : BackendQuizData ) : UiQuizData {
+		let convertedQuizData = new UiQuizData();
+		
+		convertedQuizData.length = quizData.length;
+		convertedQuizData.name = quizData.name;
+		
+		for(let entry of quizData.list) {
+			let converted_entry: UiQuizDataItem = new UiQuizDataItem();
+			let kana: String[] = [] 
+			
+			// convert kanji
+			converted_entry.kanji = entry.kanji;
+
+			// convert and limit kana
+			if(entry.kana.kun.length>1) {
+				kana.push( entry.kana.kun[0] );
+				kana.push( entry.kana.kun[1] );
+			}
+			else if(entry.kana.kun.length==1) {
+				kana.push( entry.kana.kun[0] );
+			}
+			
+			if(entry.kana.on.length>=1) {
+				kana.push(entry.kana.on[0]);
+			}			
+			converted_entry.kana = kana;
+			
+			// convert 
+			
+			convertedQuizData.list.push(converted_entry);
+		}
+		
+		return convertedQuizData;
+	}
 
 }

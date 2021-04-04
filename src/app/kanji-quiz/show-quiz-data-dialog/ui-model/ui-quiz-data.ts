@@ -6,6 +6,6 @@ export class UiQuizData {
 
 export class UiQuizDataItem {
 	public kanji: String = "";
-	public kana: String = "";
+	public kana: String[] = [];
 	public meaning: String = "";
 }
