@@ -5,8 +5,27 @@
   </button>
 </div>
 <div class="modal-body">
-	BODY
+	<table class="table-dark">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Kanji</th>
+				<th scope="col">Kana</th>
+				<th scope="col">Meaning</th>
+			</tr>
+		</thead>	
+		<tbody>
+			<ng-container *ngFor="let item of uiQuizData.list; let i = index">
+				<tr>
+					<td scope="row">{{i}}</td>
+					<td>{{item.kanji}}</td>
+					<td>{{item.kana}}</td>
+					<td>{{item.meaning}}</td>
+				</tr>
+			</ng-container>
+		</tbody>
+	</table>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+	<button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
 </div>
