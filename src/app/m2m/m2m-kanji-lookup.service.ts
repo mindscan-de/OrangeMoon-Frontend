@@ -198,7 +198,8 @@ export class M2mKanjiLookupService {
 		
 		for(let entry of quizData.list) {
 			let converted_entry: UiQuizDataItem = new UiQuizDataItem();
-			let kana: String[] = [] 
+			let kana: String[] = [];
+			let meanings: String[] = [] 
 			
 			// convert kanji
 			converted_entry.kanji = entry.kanji;
@@ -217,7 +218,16 @@ export class M2mKanjiLookupService {
 			}			
 			converted_entry.kana = kana;
 			
-			// convert 
+			// convert and linmit meanings
+			let length = 0;
+			for(let meaning of entry.meaning) {
+				if(length>=11) {
+					break;
+				}
+				meanings.push(meaning);
+				length+=meaning.length;
+			}
+			converted_entry.meaning = meanings;
 			
 			convertedQuizData.list.push(converted_entry);
 		}

@@ -20,7 +20,7 @@
 					<td scope="row"><span class="mr-2 ml-2 text-light"><b>{{i+1}}</b></span></td>
 					<td>{{item.kanji}}</td>
 					<td>{{item.kana.join('、 ')}}</td>
-					<td>{{item.meaning}}</td>
+					<td><span class="float-right mr-2">{{item.meaning.join(', ')}}</span></td>
 				</tr>
 			</ng-container>
 		</tbody>
