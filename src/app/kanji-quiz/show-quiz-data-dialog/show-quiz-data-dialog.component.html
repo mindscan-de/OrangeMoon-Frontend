@@ -1,11 +1,11 @@
 <div class="modal-header">
-  <h4 class="modal-title">TITLE</h4>
+  <h4 class="modal-title">{{uiQuizData.name}}</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
 	<span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
-	<table class="table-dark">
+	<table class="table-dark text-warning">
 		<thead>
 			<tr>
 				<th scope="col">#</th>
@@ -17,9 +17,9 @@
 		<tbody>
 			<ng-container *ngFor="let item of uiQuizData.list; let i = index">
 				<tr>
-					<td scope="row">{{i}}</td>
+					<td scope="row"><span class="mr-2 ml-2 text-light"><b>{{i+1}}</b></span></td>
 					<td>{{item.kanji}}</td>
-					<td>{{item.kana}}</td>
+					<td>{{item.kana.join('、 ')}}</td>
 					<td>{{item.meaning}}</td>
 				</tr>
 			</ng-container>
