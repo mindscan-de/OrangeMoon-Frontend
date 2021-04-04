@@ -5,8 +5,8 @@
   </button>
 </div>
 <div class="modal-body">
-	<table class="table-dark text-warning">
-		<thead>
+	<table class="table table-dark table-striped text-warning">
+<!-- 		<thead>
 			<tr>
 				<th scope="col">#</th>
 				<th scope="col">Kanji</th>
@@ -14,10 +14,10 @@
 				<th scope="col">Meaning</th>
 			</tr>
 		</thead>	
-		<tbody>
+ -->		<tbody>
 			<ng-container *ngFor="let item of uiQuizData.list; let i = index">
 				<tr>
-					<td scope="row"><span class="mr-2 ml-2 text-light"><b>{{i+1}}</b></span></td>
+					<td scope="row"><span class="text-light"><b>{{i+1}}</b></span></td>
 					<td>{{item.kanji}}</td>
 					<td>{{item.kana.join('、 ')}}</td>
 					<td><span class="float-right mr-2">{{item.meaning.join(', ')}}</span></td>
