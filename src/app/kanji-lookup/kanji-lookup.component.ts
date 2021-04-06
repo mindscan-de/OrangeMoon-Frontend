@@ -49,7 +49,7 @@ export class KanjiLookupComponent implements OnInit {
 	onLookupResultLoaded(data: BackendLookupResult) : void {
 		console.log(data);
 		
-		this.lookupResult = data;
+		this.lookupResult = data;shuu
 	}
 	
 	onLookupResultFailed(error: any) : void {
@@ -59,6 +59,8 @@ export class KanjiLookupComponent implements OnInit {
 	}
 	
 	onLookupInputChanged(lookupinput) : void {
+		// TODO: we should only do that if kana mode is enabled 
+		// TODO: add mode for enable and disable input
 		this.currentKanjiQueryString = toKana(lookupinput,{ upcaseKatakana: true,　customKanaMapping: { n:'n',　tchi:'っち', nn:'ん'}});
 	}
 	
