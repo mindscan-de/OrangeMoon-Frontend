@@ -12,7 +12,7 @@
 			<form (ngSubmit)="onSubmit()">
 			<div class="form-row">
 				<div class="input-group mb-3">
-					<input type="text" class="form-control form-control-lg"  (ngModelChange)="onLookupInputChanged($event)" [ngModel]="currentKanjiQueryString" placeholder="Kanji"  name="q" >
+					<input type="text" class="form-control form-control-lg"  (ngModelChange)="onLookupInputChanged($event)" [ngModel]="currentKanjiQueryString" placeholder="Kanji or Kana"  name="q" >
 					<div class="input-group-append">
 						<button class="btn btn-outline-success btn-lg" type="submit" ><span>Lookup</span></button>
 					</div>			
