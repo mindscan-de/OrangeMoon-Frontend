@@ -59,7 +59,7 @@ export class KanjiLookupComponent implements OnInit {
 	}
 	
 	onLookupInputChanged(lookupinput) : void {
-		this.currentKanjiQueryString = toKana(lookupinput,{ upcaseKatakana: true,　customKanaMapping: { n:'n', nn:'ん'}});
+		this.currentKanjiQueryString = toKana(lookupinput,{ upcaseKatakana: true,　customKanaMapping: { n:'n',　tchi:'っち', nn:'ん'}});
 	}
 	
 	
