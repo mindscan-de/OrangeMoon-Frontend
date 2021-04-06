@@ -49,7 +49,7 @@ export class KanjiLookupComponent implements OnInit {
 	onLookupResultLoaded(data: BackendLookupResult) : void {
 		console.log(data);
 		
-		this.lookupResult = data;shuu
+		this.lookupResult = data;
 	}
 	
 	onLookupResultFailed(error: any) : void {
