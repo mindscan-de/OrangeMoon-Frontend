@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params} from '@angular/router';
+import { toKana } from 'wanakana';
 
 // Backend Service
 import { KanjiDataBackendService } from '../backend-service/kanji-data-backend.service';
@@ -55,6 +56,10 @@ export class KanjiLookupComponent implements OnInit {
 		console.log(error);
 		
 		this.lookupResult = new BackendLookupResult();
+	}
+	
+	onLookupInputChanged(lookupinput) : void {
+		this.currentKanjiQueryString = toKana(lookupinput,{ upcaseKatakana: true,　customKanaMapping: { n:'n', nn:'ん'}});
 	}
 	
 	
