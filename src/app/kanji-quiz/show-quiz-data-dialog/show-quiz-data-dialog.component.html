@@ -9,15 +9,7 @@
 		<li class="list-group-item list-group-item-action text-center">Start Simple Quiz</li>
 	</ul>
 	<table class="table table-sm table-dark table-striped text-warning">
-<!-- 		<thead>
-			<tr>
-				<th scope="col">#</th>
-				<th scope="col">Kanji</th>
-				<th scope="col">Kana</th>
-				<th scope="col">Meaning</th>
-			</tr>
-		</thead>	
- -->		<tbody>
+		<tbody>
 			<ng-container *ngFor="let item of uiQuizData.list; let i = index">
 				<tr>
 					<td scope="row"><span class="text-light"><b>{{i+1}}</b></span></td>
