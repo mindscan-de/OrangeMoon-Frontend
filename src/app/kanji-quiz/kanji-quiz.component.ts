@@ -8,6 +8,7 @@ import { BackendQuizList, BackendQuizListItem } from '../backend-service/backend
 // Modal dialogs
 import { ShowQuizDataDialogComponent } from './show-quiz-data-dialog/show-quiz-data-dialog.component';
 import { JoinGameDialogComponent } from './join-game-dialog/join-game-dialog.component'; 
+import { CreateGameDialogComponent } from './create-game-dialog/create-game-dialog.component';
 
 @Component({
   selector: 'app-kanji-quiz',
@@ -46,6 +47,15 @@ export class KanjiQuizComponent implements OnInit {
 	onCreateQuizGame() : void {
 		// Will let one player create a new game, and register the game, create a temporary user name
 		// Will be the one who kicks off the game, if everyone is in
+		const modalref = this.modalService.open( CreateGameDialogComponent, {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl'} );
+		
+		modalref.componentInstance.setDialogDa();
+		
+		modalref.result.then(
+			(result)=>{},
+			(reason)=>{}
+		);
+		
 	}
 	
 	onJoinQuizGame() : void {
