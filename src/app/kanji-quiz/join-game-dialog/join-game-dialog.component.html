@@ -1,1 +1,17 @@
-<p>join-game-dialog works!</p>
+<div class="modal-header">
+  <h4 class="modal-title">Join Game</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+	<span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+	<ul>
+		<li>Enter The Quiz Room Id</li>
+		<li>Enter The Quiz Rooms Password</li>
+		<li>Join Button</li>
+		<!-- Will authenticate the anonymous user, Then the will be redirected to the kanji game page, with the  -->
+	</ul>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="onJoin()">Join</button>
+</div>
