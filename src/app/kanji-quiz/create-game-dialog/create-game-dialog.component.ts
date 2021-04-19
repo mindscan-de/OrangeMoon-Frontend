@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-create-game-dialog',
   templateUrl: './create-game-dialog.component.html',
   styleUrls: ['./create-game-dialog.component.css']
 })
-export class CreateGameDialogComponent implements OnInit {
+export class CreateGameDialogComponent {
 
-  constructor() { }
+	constructor(public activeModal: NgbActiveModal) { }
 
-  ngOnInit(): void {
-  }
+	setDialogData(  ) : void {
+		
+	}
+	
+	onClose() : void {
+		this.activeModal.close();
+	}
+	
+	onCreate() : void {
+		
+	} 
 
 }

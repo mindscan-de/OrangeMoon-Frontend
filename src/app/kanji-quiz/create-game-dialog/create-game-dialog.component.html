@@ -1,1 +1,19 @@
-<p>create-game-dialog works!</p>
+<p>create-game-dialog works!</p><div class="modal-header">
+  <h4 class="modal-title">Create </h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+	<span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+	<ul>
+		<li>Set Room Password</li>
+		<li>Create Button</li>
+		<li></li>
+		<li></li>
+		<!-- Will create a user, which has the ability to choose the quiz and the number of questions, this will create a moderator. -->
+	</ul>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="onCreate();">Create Game</button>
+</div>
+
