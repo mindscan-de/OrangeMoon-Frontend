@@ -18,6 +18,7 @@ import { KanjiTMComponent } from './kanji-tm/kanji-tm.component';
 import { KanjiQuizComponent } from './kanji-quiz/kanji-quiz.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShowQuizDataDialogComponent } from './kanji-quiz/show-quiz-data-dialog/show-quiz-data-dialog.component';
+import { JoinGameDialogComponent } from './kanji-quiz/join-game-dialog/join-game-dialog.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ShowQuizDataDialogComponent } from './kanji-quiz/show-quiz-data-dialog/
     KanjiLookupShowNamesComponent,
     KanjiTMComponent,
     KanjiQuizComponent,
-    ShowQuizDataDialogComponent
+    ShowQuizDataDialogComponent,
+    JoinGameDialogComponent
   ],
   imports: [
     BrowserModule,
