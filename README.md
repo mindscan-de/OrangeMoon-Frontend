@@ -50,6 +50,7 @@ similar. At least not yet.
 
 * input hiragana / katakana (via OS-IME) and lookup the word in the dictionary **[done]**
 ** lookup names, words and kanji **[done]**
+* input romaji w/o OS-IME and use wanakana for conversion of the search input **[done]** 
 
 # TODO
 
