@@ -1,17 +1,23 @@
 <div class="modal-header">
-  <h4 class="modal-title">Create </h4>
+  <h4 class="modal-title">Create Quiz Room</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
 	<span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
-	<ul>
-		<li>Set Room Password</li>
-		<li>Create Button</li>
-		<li></li>
-		<li></li>
-		<!-- Will create a user, which has the ability to choose the quiz and the number of questions, this will create a moderator. -->
-	</ul>
+
+	<div class="form-group">
+		<label for="quizRoomPassword">Set Quiz Room Password</label>
+		<input type="password" class="form-control" id="quizRoomPassword" aria-labelledby="quizRoomPasswordHelp" placeholder="Password" >
+		<small id="quizRoomPasswordHelp" class="form-text text-muted">Leave empty for none.</small>
+	</div>
+
+	<div class="form-group">
+		<label for="quizRoomName">Choose your Playername</label>
+		<input type="text" class="form-control" id="quizRoomName" aria-labelledby="quizRoomNameHelp" placeholder="Playername" >
+		<small id="quizRoomNameHelp" class="form-text text-muted">Please use ascii characters only at the moment.</small>
+	</div>
+	<!-- Will create a user, which has the ability to choose the quiz and the number of questions, this will create a moderator. -->
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark" (click)="onCreate();">Create Game</button>
