@@ -5,13 +5,25 @@
   </button>
 </div>
 <div class="modal-body">
-	<ul>
-		<li>Enter The Quiz Room Id</li>
-		<li>Enter The Quiz Rooms Password</li>
-		<li>Enter Player Name</li>
-		<li>Join Button</li>
-		<!-- Will authenticate the anonymous user, Then the will be redirected to the kanji game page, with the  -->
-	</ul>
+	<div class="form-group">
+		<label for="quizRoomName">Choose your Playername</label>
+		<input type="text" class="form-control" id="quizRoomName" aria-labelledby="quizRoomNameHelp" placeholder="Playername" >
+		<small id="quizRoomNameHelp" class="form-text text-muted">Please use ascii characters only at the moment.</small>
+	</div>
+
+	<div class="form-group">
+		<label for="quizRoomId">Quiz Room Id</label>
+		<input type="password" class="form-control" id="quizRoomId" aria-labelledby="quizRoomIdHelp" placeholder="Room Id" >
+		<small id="quizRoomIdHelp" class="form-text text-muted"></small>
+	</div>
+
+	<div class="form-group">
+		<label for="quizRoomPassword">Quiz Room Password</label>
+		<input type="password" class="form-control" id="quizRoomPassword" aria-labelledby="quizRoomPasswordHelp" placeholder="Password" >
+		<small id="quizRoomPasswordHelp" class="form-text text-muted">Leave empty if none.</small>
+	</div>
+	
+	<!-- Will authenticate the anonymous user, Then the will be redirected to the kanji game page, with the  -->
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-outline-dark" (click)="onJoin()">Join</button>
