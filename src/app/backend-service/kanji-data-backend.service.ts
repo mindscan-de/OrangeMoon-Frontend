@@ -86,4 +86,11 @@ export class KanjiDataBackendService {
 		
 		return this.httpClient.get<BackendQuizData>(this._getQuizData, {params: httpParameters})
 	}
+	
+	
+	// TODO: createGameChannel -> should return data of channel and an authentication token
+	// TODO: joinGameChannel -> should return data of channel and an authentication token
+	// TODO: leaveGameChannel -> should clear the authentication token?
+	// how to persist the user data locally?
+	
 }
