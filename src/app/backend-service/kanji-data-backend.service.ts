@@ -27,6 +27,9 @@ export class KanjiDataBackendService {
 	private _getQuizList                 = '/OrangeMoon/rest/getQuizList';
 	private _getQuizData                 = '/OrangeMoon/rest/getQuizData';
 	
+	private _createGameChannel           = '/OrangeMoon/rest/createGameChannel';
+	private _joinGameChannel             = '/OrangeMoon/rest/joinGameChannel';
+	
 	constructor( private httpClient : HttpClient ) { }
 
 	getKanjiRadicals () : Observable<BackendKanjiRadicals> {
@@ -70,13 +73,13 @@ export class KanjiDataBackendService {
 		
 		httpParameters = httpParameters.append("selected",selectedKanji );
 		
-		return this.httpClient.get<BackendLookupResult>(this._lookupStrictKanji, {params: httpParameters})
+		return this.httpClient.get<BackendLookupResult>(this._lookupStrictKanji, {params: httpParameters});
 	}
 	
 	getKanjiQuizList(): Observable<BackendQuizList> {
 		let httpParameters = new HttpParams({encoder:new CustomEncoder()});
 		
-		return this.httpClient.get<BackendQuizList>(this._getQuizList, {params: httpParameters})
+		return this.httpClient.get<BackendQuizList>(this._getQuizList, {params: httpParameters});
 	}
 	
 	getKanjiQuizData(quizname:string): Observable<BackendQuizData> {
@@ -84,12 +87,30 @@ export class KanjiDataBackendService {
 		
 		httpParameters = httpParameters.append('quizname', quizname);
 		
-		return this.httpClient.get<BackendQuizData>(this._getQuizData, {params: httpParameters})
+		return this.httpClient.get<BackendQuizData>(this._getQuizData, {params: httpParameters});
 	}
 	
-	
 	// TODO: createGameChannel -> should return data of channel and an authentication token
+	createGameChannel(playerName: string, quizRoomPassword: string) : Observable<any> {
+		let formdata = new FormData();
+		
+		formdata.append('playerName', playerName);
+		formdata.append('quizRoomPasswordP', quizRoomPassword);
+		
+		return this.httpClient.post<any>(this._createGameChannel, formdata);
+	}
+	
 	// TODO: joinGameChannel -> should return data of channel and an authentication token
+	joinGameChannel(playerName: string, quizRoomId: string, quizRoomPassword:string): Observable<any> {
+		let formdata = new FormData();
+		
+		formdata.append('playerName', playerName);
+		formdata.append('quizRoomId', quizRoomId);
+		formdata.append('quizRoomPasswordP', quizRoomPassword);
+		
+		return this.httpClient.post<any>(this._joinGameChannel, formdata);
+	}
+	
 	// TODO: leaveGameChannel -> should clear the authentication token?
 	// how to persist the user data locally?
 	
