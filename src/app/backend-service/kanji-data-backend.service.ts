@@ -29,6 +29,7 @@ export class KanjiDataBackendService {
 	
 	private _createGameChannel           = '/OrangeMoon/rest/createGameChannel';
 	private _joinGameChannel             = '/OrangeMoon/rest/joinGameChannel';
+	private _leaveGameChannel            = '/OrangeMoon/rest/leaveGameChannel';
 	
 	constructor( private httpClient : HttpClient ) { }
 
@@ -112,6 +113,14 @@ export class KanjiDataBackendService {
 	}
 	
 	// TODO: leaveGameChannel -> should clear the authentication token?
+	leaveGameChannel(): Observable<any> {
+		let formdata = new FormData();
+		
+		// TODO Playertoken,
+		
+		return this.httpClient.post<any>(this._leaveGameChannel, formdata);		
+	}
+	
 	// how to persist the user data locally?
 	
 }
