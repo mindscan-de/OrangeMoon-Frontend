@@ -96,7 +96,7 @@ export class KanjiDataBackendService {
 		let formdata = new FormData();
 		
 		formdata.append('playerName', playerName);
-		formdata.append('quizRoomPasswordP', quizRoomPassword);
+		formdata.append('quizRoomPassword', quizRoomPassword);
 		
 		return this.httpClient.post<any>(this._createGameChannel, formdata);
 	}
@@ -107,7 +107,7 @@ export class KanjiDataBackendService {
 		
 		formdata.append('playerName', playerName);
 		formdata.append('quizRoomId', quizRoomId);
-		formdata.append('quizRoomPasswordP', quizRoomPassword);
+		formdata.append('quizRoomPassword', quizRoomPassword);
 		
 		return this.httpClient.post<any>(this._joinGameChannel, formdata);
 	}
