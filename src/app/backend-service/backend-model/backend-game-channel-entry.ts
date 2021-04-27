@@ -1,4 +1,4 @@
-export class BackendGameChannelEntryHall {
+export class BackendGameChannelEntry {
 	public gameChannelId: string;
 	public gameChannelAccessToken: string;
 	
