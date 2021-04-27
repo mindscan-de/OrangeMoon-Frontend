@@ -13,6 +13,7 @@ import { BackendKanjiRadicalsWithStrokes } from './backend-model/backend-kanji-r
 import { BackendLookupResult } from './backend-model/backend-lookup-result';
 import { BackendQuizList } from './backend-model/backend-quiz-list';
 import { BackendQuizData } from './backend-model/backend-quiz-data';
+import { BackendGameChannelEntry } from './backend-model/backend-game-channel-entry';
 
 @Injectable({
   providedIn: 'root'
@@ -91,14 +92,13 @@ export class KanjiDataBackendService {
 		return this.httpClient.get<BackendQuizData>(this._getQuizData, {params: httpParameters});
 	}
 	
-	// TODO: createGameChannel -> should return data of channel and an authentication token
-	createGameChannel(playerName: string, quizRoomPassword: string) : Observable<any> {
+	createGameChannel(playerName: string, quizRoomPassword: string) : Observable<BackendGameChannelEntry> {
 		let formdata = new FormData();
 		
 		formdata.append('playerName', playerName);
 		formdata.append('quizRoomPassword', quizRoomPassword);
 		
-		return this.httpClient.post<any>(this._createGameChannel, formdata);
+		return this.httpClient.post<BackendGameChannelEntry>(this._createGameChannel, formdata);
 	}
 	
 	// TODO: joinGameChannel -> should return data of channel and an authentication token
