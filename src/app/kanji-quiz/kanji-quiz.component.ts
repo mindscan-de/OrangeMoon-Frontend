@@ -52,7 +52,13 @@ export class KanjiQuizComponent implements OnInit {
 		modalref.componentInstance.setDialogDa();
 		
 		modalref.result.then(
-			(result)=>{},
+			(result)=>{
+				// TODO  playername und passwort aus dem result frickeln..
+				this.backendService.createGameChannel('playerName','quizroomPassword').subscribe(
+					data => { /* und hier schoen zum quizroom navigieren... */},
+					error => { /* present error message*/ }
+				);
+			},
 			(reason)=>{}
 		);
 		
