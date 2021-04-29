@@ -20,6 +20,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShowQuizDataDialogComponent } from './kanji-quiz/show-quiz-data-dialog/show-quiz-data-dialog.component';
 import { JoinGameDialogComponent } from './kanji-quiz/join-game-dialog/join-game-dialog.component';
 import { CreateGameDialogComponent } from './kanji-quiz/create-game-dialog/create-game-dialog.component';
+import { KanjiGameComponent } from './kanji-game/kanji-game.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CreateGameDialogComponent } from './kanji-quiz/create-game-dialog/creat
     KanjiQuizComponent,
     ShowQuizDataDialogComponent,
     JoinGameDialogComponent,
-    CreateGameDialogComponent
+    CreateGameDialogComponent,
+    KanjiGameComponent
   ],
   imports: [
     BrowserModule,
