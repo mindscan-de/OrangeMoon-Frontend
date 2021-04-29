@@ -4,6 +4,7 @@ import { KanjiByRadicalsSelectorComponent } from './kanji-by-radicals-selector/k
 import { KanjiLookupComponent } from './kanji-lookup/kanji-lookup.component';
 import { KanjiTMComponent } from './kanji-tm/kanji-tm.component';
 import { KanjiQuizComponent } from './kanji-quiz/kanji-quiz.component';
+import { KanjiGameComponent } from './kanji-game/kanji-game.component';
 import { MainComponent } from './main/main.component';
 
 
@@ -13,7 +14,16 @@ const routes: Routes = [
 	{ path: 'kanjibyradicals', component:KanjiByRadicalsSelectorComponent},
 	{ path: 'kanjilookup', component:KanjiLookupComponent},
 	{ path: 'ktm', component:KanjiTMComponent},
-	{ path: 'kanjiquiz', component:KanjiQuizComponent}
+	{ path: 'kanjiquiz', component:KanjiQuizComponent },
+	{ path: 'kanjigame/:gameroomid', component:KanjiGameComponent,
+		children: [
+			{ path: '', component: KanjiGameComponent },
+			// hall of fame
+			// entry hall
+			// playgound etc
+			{ path: 'game', component: KanjiGameComponent},
+		]
+	}
 ];
 
 @NgModule({
