@@ -17,11 +17,11 @@ const routes: Routes = [
 	{ path: 'kanjiquiz', component:KanjiQuizComponent },
 	{ path: 'kanjigame/:gameroomid', component:KanjiGameComponent,
 		children: [
-			{ path: '', component: KanjiGameComponent },
-			// hall of fame
 			// entry hall
+			{ path: '', component: KanjiGameComponent },
 			// playgound etc
 			{ path: 'game', component: KanjiGameComponent},
+			// TODO hall of fame ?
 		]
 	}
 ];
