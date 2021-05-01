@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params} from '@angular/router';
 
 import { KanjiDataBackendService } from '../backend-service/kanji-data-backend.service';
+import { UserGameDataService } from '../backend-service/user-game-data.service';
 
 import { BackendQuizList, BackendQuizListItem } from '../backend-service/backend-model/backend-quiz-list';
+
+import { BackendGameChannelEntry } from '../backend-service/backend-model/backend-game-channel-entry';
 
 @Component({
   selector: 'app-kanji-game',
@@ -13,17 +16,25 @@ import { BackendQuizList, BackendQuizListItem } from '../backend-service/backend
 export class KanjiGameComponent implements OnInit {
 	
 	public kanjiQuizList: BackendQuizListItem[]= [];
+	public userdata: BackendGameChannelEntry = new BackendGameChannelEntry();
 	
 	public selectedGame: string = "";
 	public selectedQuestionCount: number = 10;
 
-	constructor(private route: ActivatedRoute, private backendService: KanjiDataBackendService) { 
+	constructor(private route: ActivatedRoute, private backendService: KanjiDataBackendService, private usergamedataService: UserGameDataService) { 
 		this.route.params.subscribe(params => console.log(params));
 		
-		backendService.getKanjiQuizList().subscribe(
+		this.backendService.getKanjiQuizList().subscribe(
 			data => this.onKanjiQuizdataListLoaded(data),
 			error => this.onKanjiQuizdataListFailed(error)
 		);
+	}
+
+	ngOnInit(): void {
+		let userdata = this.usergamedataService.getGameChannelPlayerData()
+		if(userdata != null) {
+			this.userdata = userdata;
+		}
 	}
 	
 	onKanjiQuizdataListLoaded(listdata : BackendQuizList): void {
@@ -37,9 +48,6 @@ export class KanjiGameComponent implements OnInit {
 	onStartPressed() : void {
 		console.log("We now start the game using the Websocket ....")
 		// Now we do the hard stuff...
-	}
-
-	ngOnInit(): void {
 	}
 
 }

@@ -7,16 +7,16 @@ import { BackendGameChannelEntry } from './backend-model/backend-game-channel-en
   providedIn: 'root'
 })
 export class UserGameDataService {
+	
+	private __userdata: BackendGameChannelEntry;
 
 	constructor() { }
 
 	setGameChannelPlayerData(data:BackendGameChannelEntry): void {
-		console.log(data);
-		
-		
+		this.__userdata = data;
 	}
 	
 	getGameChannelPlayerData(): BackendGameChannelEntry {
-		return null;
+		return this.__userdata;
 	}
 }
