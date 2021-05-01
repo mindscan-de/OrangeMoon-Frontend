@@ -13,6 +13,9 @@ import { BackendQuizList, BackendQuizListItem } from '../backend-service/backend
 export class KanjiGameComponent implements OnInit {
 	
 	public kanjiQuizList: BackendQuizListItem[]= [];
+	
+	public selectedGame: string = "";
+	public selectedQuestionCount: number = 10;
 
 	constructor(private route: ActivatedRoute, private backendService: KanjiDataBackendService) { 
 		this.route.params.subscribe(params => console.log(params));
