@@ -10,6 +10,8 @@ import { KanjiDataBackendService } from '../backend-service/kanji-data-backend.s
 import { BackendQuizList, BackendQuizListItem } from '../backend-service/backend-model/backend-quiz-list';
 import { BackendGameChannelEntry } from '../backend-service/backend-model/backend-game-channel-entry';
 
+// Game Backend
+import { UserGameDataService } from '../backend-service/user-game-data.service';
 
 // Modal dialogs
 import { ShowQuizDataDialogComponent } from './show-quiz-data-dialog/show-quiz-data-dialog.component';
@@ -25,7 +27,8 @@ export class KanjiQuizComponent implements OnInit {
 	
 	public kanjiQuizList: BackendQuizListItem[]= []; 
 
-	constructor(private activatedRoute : ActivatedRoute, private backendService: KanjiDataBackendService, private modalService: NgbModal, private router : Router) { }
+	constructor(private activatedRoute : ActivatedRoute, private backendService: KanjiDataBackendService, 
+				private modalService: NgbModal, private router : Router, private userdataService:UserGameDataService) { }
 
 	ngOnInit(): void {
 		this.backendService.getKanjiQuizList().subscribe(
@@ -70,9 +73,7 @@ export class KanjiQuizComponent implements OnInit {
 	}
 	
 	onQuizGameRoomCreated(gameChannelUserConfiguration: BackendGameChannelEntry) : void {
-		// TODO: save this data in some kind of common backend...
-		
-		console.log(gameChannelUserConfiguration);
+		this.userdataService.setGameChannelPlayerData(gameChannelUserConfiguration);
 		
 		this.router.navigateByUrl('/kanjigame/'+gameChannelUserConfiguration.gameChannelId);
 	}
