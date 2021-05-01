@@ -13,11 +13,7 @@
 					<label for="gameSelection">Select Game</label>
 					<select class="form-control" id="gameSelection">
 						<option value="">None</option>
-						<option>1</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
+						<option *ngFor="let item of kanjiQuizList" >{{item.name}}</option>
 					</select>
 				</div>
 				
