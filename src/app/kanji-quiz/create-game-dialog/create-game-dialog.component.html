@@ -8,13 +8,13 @@
 
 	<div class="form-group">
 		<label for="quizRoomName">Choose your Playername</label>
-		<input type="text" class="form-control" id="quizRoomName" aria-labelledby="quizRoomNameHelp" placeholder="Playername" >
+		<input type="text" class="form-control" id="quizRoomName" aria-labelledby="quizRoomNameHelp" placeholder="Playername" [(ngModel)]="selectedPlayerName" >
 		<small id="quizRoomNameHelp" class="form-text text-muted">Please use ascii characters only at the moment.</small>
 	</div>
 
 	<div class="form-group">
 		<label for="quizRoomPassword">Set Quiz Room Password</label>
-		<input type="password" class="form-control" id="quizRoomPassword" aria-labelledby="quizRoomPasswordHelp" placeholder="Password" >
+		<input type="password" class="form-control" id="quizRoomPassword" aria-labelledby="quizRoomPasswordHelp" placeholder="Password" [(ngModel)]="selectedQuizRoomPassword" >
 		<small id="quizRoomPasswordHelp" class="form-text text-muted">Leave empty for none.</small>
 	</div>
 

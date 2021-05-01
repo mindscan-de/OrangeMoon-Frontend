@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs/Observable';
 
 // Kanji Backend
 import { KanjiDataBackendService } from '../backend-service/kanji-data-backend.service';
 import { BackendQuizList, BackendQuizListItem } from '../backend-service/backend-model/backend-quiz-list';
+import { BackendGameChannelEntry } from '../backend-service/backend-model/backend-game-channel-entry';
+
 
 // Modal dialogs
 import { ShowQuizDataDialogComponent } from './show-quiz-data-dialog/show-quiz-data-dialog.component';
@@ -49,19 +52,22 @@ export class KanjiQuizComponent implements OnInit {
 		// Will be the one who kicks off the game, if everyone is in
 		const modalref = this.modalService.open( CreateGameDialogComponent, {centered: true, ariaLabelledBy: 'modal-basic-title', size:'xl'} );
 		
-		modalref.componentInstance.setDialogDa();
+		modalref.componentInstance.setDialogData();
 		
 		modalref.result.then(
 			(result)=>{
-				// TODO  playername und passwort aus dem result frickeln..
-				this.backendService.createGameChannel('playerName','quizroomPassword').subscribe(
-					data => { /* und hier schoen zum quizroom navigieren... */},
-					error => { /* present error message*/ }
-				);
+				let gameRoom: Observable<BackendGameChannelEntry> = result;
+				
+				gameRoom.subscribe(
+					data=> { this.onCreatedQuizGameRoom(data); },
+					error=> {} );
 			},
 			(reason)=>{}
 		);
-		
+	}
+	
+	onCreatedQuizGameRoom(gameChannelUserConfiguration: BackendGameChannelEntry) : void {
+		console.log(gameChannelUserConfiguration);
 	}
 	
 	onJoinQuizGame() : void {
