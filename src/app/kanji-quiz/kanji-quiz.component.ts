@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+
+// Bootstrap / Modal dialogs
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 // Kanji Backend
 import { KanjiDataBackendService } from '../backend-service/kanji-data-backend.service';
@@ -22,7 +25,7 @@ export class KanjiQuizComponent implements OnInit {
 	
 	public kanjiQuizList: BackendQuizListItem[]= []; 
 
-	constructor(private backendService: KanjiDataBackendService, private modalService: NgbModal) { }
+	constructor(private activatedRoute : ActivatedRoute, private backendService: KanjiDataBackendService, private modalService: NgbModal, private router : Router) { }
 
 	ngOnInit(): void {
 		this.backendService.getKanjiQuizList().subscribe(
@@ -59,15 +62,19 @@ export class KanjiQuizComponent implements OnInit {
 				let gameRoom: Observable<BackendGameChannelEntry> = result;
 				
 				gameRoom.subscribe(
-					data=> { this.onCreatedQuizGameRoom(data); },
+					data=> { this.onQuizGameRoomCreated(data); },
 					error=> {} );
 			},
 			(reason)=>{}
 		);
 	}
 	
-	onCreatedQuizGameRoom(gameChannelUserConfiguration: BackendGameChannelEntry) : void {
+	onQuizGameRoomCreated(gameChannelUserConfiguration: BackendGameChannelEntry) : void {
+		// TODO: save this data in some kind of common backend...
+		
 		console.log(gameChannelUserConfiguration);
+		
+		this.router.navigateByUrl('/kanjigame/'+gameChannelUserConfiguration.gameChannelId);
 	}
 	
 	onJoinQuizGame() : void {
