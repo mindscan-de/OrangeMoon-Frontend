@@ -33,6 +33,11 @@ export class KanjiGameComponent implements OnInit {
 	onKanjiQuizdataListFailed(error:any) : void {
 		console.log(error);
 	}
+	
+	onStartPressed() : void {
+		console.log("We now start the game using the Websocket ....")
+		// Now we do the hard stuff...
+	}
 
 	ngOnInit(): void {
 	}
